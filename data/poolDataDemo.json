@@ -1,0 +1,26 @@
+{
+  "id": 4947,
+  "chainId": 20,
+  "dexId": 3,
+  "pairId": 31,
+  "pairAddress": "0x123",
+  "url": "",
+  "feeTier": 10000,
+
+  "token0": {
+    "id": 7,
+    "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/3408.png",
+    "rank": 1,
+    "symbol": "USDC",
+    "address": "0x123",
+    "decimals": 6
+  },
+  "token1": {
+    "id": 2,
+    "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/2396.png",
+    "rank": 4,
+    "symbol": "WETH",
+    "address": "0x123",
+    "decimals": 18
+  }
+}

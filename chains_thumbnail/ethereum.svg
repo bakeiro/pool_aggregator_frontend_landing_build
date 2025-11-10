@@ -1,0 +1,16 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><script xmlns="" async="false" src="moz-extension://c455bcbb-c0ec-41e6-b7b9-a06fd4322113/js/vendor.js"/><script xmlns="" async="false" src="moz-extension://c455bcbb-c0ec-41e6-b7b9-a06fd4322113/js/injected/proxy-injected-providers.js"/>
+<rect width="100" height="100" fill="#627EEA"/>
+<g clip-path="url(#clip0_5845_552)">
+<path d="M50.493 12L49.9795 13.7319V63.9843L50.493 64.493L73.9855 50.7047L50.493 12Z" fill="#C0CBF7"/>
+<path d="M50.4931 12L27 50.7047L50.4931 64.493V40.1019V12Z" fill="white"/>
+<path d="M50.4935 68.9093L50.2041 69.2597V87.1604L50.4935 87.9993L74.0004 55.1282L50.4935 68.9093Z" fill="#C0CBF7"/>
+<path d="M50.4931 87.9993V68.9093L27 55.1282L50.4931 87.9993Z" fill="white"/>
+<path d="M50.4932 64.4929L73.9857 50.7046L50.4932 40.1018V64.4929Z" fill="#8197EE"/>
+<path d="M27 50.7046L50.4931 64.4929V40.1018L27 50.7046Z" fill="#C0CBF7"/>
+</g>
+<defs>
+<clipPath id="clip0_5845_552">
+<rect width="47" height="76" fill="white" transform="translate(27 12)"/>
+</clipPath>
+</defs>
+</svg>
