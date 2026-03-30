@@ -13,10 +13,9 @@ const containerEnd = `</div></div></body>`;
 const HTMLEnd = `</html>`;
 
 const PAGES_DIR = "./dynamicContent/best-pools";
-const OUTPUT_DIR = "./dynamicContent/best-pools-prerender";
+const OUTPUT_DIR = "./best-pools/";
 const SOURCE_HTML = "./index.html";
 const SUPPORTED_EXTS = new Set([".tsx", ".jsx"]);
-
 
 interface ExtractedAssets {
   scriptTag: string;
@@ -50,11 +49,9 @@ function injectAssets(head: string, assets: ExtractedAssets): string {
     .replace("<!-- %link_css% -->", assets.linkTag);
 }
 
-
 function buildHtml(body: string, head: string): string {
   return `${DocStart}${head}${containerStart}${navbar}${body}${footer}${containerEnd}${HTMLEnd}`;
 }
-
 
 interface PageModule {
   default: React.ComponentType<Record<string, never>>;
@@ -73,14 +70,12 @@ async function renderPage(filePath: string, head: string): Promise<string> {
   return buildHtml(body, head);
 }
 
-
 function routeFromFile(pagesDir: string, filePath: string): string {
   const rel = relative(pagesDir, filePath);
   const withoutExt = rel.replace(/\.(tsx|jsx)$/, "");
   if (withoutExt === "index") return "/";
   return "/" + withoutExt.replace(/\/index$/, "/");
 }
-
 
 async function main() {
   console.log(`\n🚀 Pre-render starting`);

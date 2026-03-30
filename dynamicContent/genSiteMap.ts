@@ -9,7 +9,7 @@ const args = Object.fromEntries(
 
 const CONFIG_PATH = "./prerender.config.js";
 const BASE_URL = "https://poolmaster.io";
-const OUTPUT_PATH = "./public/sitemap.xml";
+const OUTPUT_PATH = "./sitemap.xml";
 
 let routes;
 
