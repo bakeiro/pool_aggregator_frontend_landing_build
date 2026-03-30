@@ -1,9 +1,7 @@
 import { basename, extname, join, relative } from "https://deno.land/std@0.224.0/path/mod.ts";
 import { ensureDir } from "https://deno.land/std@0.224.0/fs/ensure_dir.ts";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { walk } from "https://deno.land/std@0.224.0/fs/walk.ts";
 import { renderToStaticMarkup } from "npm:react-dom/server";
-import { toPascalCase } from "./utils.ts";
 import React from "npm:react";
 
 const DocStart = `<!DOCTYPE html><html lang="en">`;
@@ -16,82 +14,86 @@ const HTMLEnd = `</html>`;
 
 const PAGES_DIR = "./dynamicContent/best-pools";
 const OUTPUT_DIR = "./dynamicContent/best-pools-prerender";
+const SOURCE_HTML = "./index.html";
 const SUPPORTED_EXTS = new Set([".tsx", ".jsx"]);
 
-interface HtmlOptions {
-  title: string;
-  body: string;
-  /** Any extra <head> content exported from the page as `export const head` */
-  headExtra?: string;
+
+interface ExtractedAssets {
+  scriptTag: string;
+  linkTag: string;
 }
 
-function buildHtml({ title, body, headExtra = "" }: HtmlOptions): string {
-  return `${DocStart}${Head}${containerStart}${navbar}${body}${footer}${containerEnd}${HTMLEnd}`;
+async function extractAssets(htmlPath: string): Promise<ExtractedAssets> {
+  let source: string;
+  try {
+    source = await Deno.readTextFile(htmlPath);
+  } catch {
+    throw new Error(
+      `Cannot read SOURCE_HTML at "${htmlPath}". Did you run \`vite build\` first?`,
+    );
+  }
+
+  // <script type="module" crossorigin src="/assets/index-XYZ.js"></script>
+  const scriptMatch = source.match(/<script\s[^>]*type=["']module["'][^>]*><\/script>/i);
+  if (!scriptMatch) throw new Error(`No <script type="module"> found in ${htmlPath}`);
+
+  // <link rel="stylesheet" crossorigin href="/assets/index-XYZ.css">
+  const linkMatch = source.match(/<link\s[^>]*rel=["']stylesheet["'][^>]*\/?>/i);
+  if (!linkMatch) throw new Error(`No <link rel="stylesheet"> found in ${htmlPath}`);
+
+  return { scriptTag: scriptMatch[0], linkTag: linkMatch[0] };
 }
 
-function escapeHtml(str: string): string {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+function injectAssets(head: string, assets: ExtractedAssets): string {
+  return head
+    .replace("<!-- %script_js% -->", assets.scriptTag)
+    .replace("<!-- %link_css% -->", assets.linkTag);
 }
 
-// ─── Per-page rendering ───────────────────────────────────────────────────────
+
+function buildHtml(body: string, head: string): string {
+  return `${DocStart}${head}${containerStart}${navbar}${body}${footer}${containerEnd}${HTMLEnd}`;
+}
+
 
 interface PageModule {
   default: React.ComponentType<Record<string, never>>;
-  /** Optional: page <title> */
-  title?: string;
-  /** Optional: raw HTML string injected into <head> */
-  head?: string;
 }
 
-async function renderPage(filePath: string): Promise<string> {
-  // Deno dynamic import requires an absolute URL / file URL
+async function renderPage(filePath: string, head: string): Promise<string> {
   const absolutePath = await Deno.realPath(filePath);
   const fileUrl = `file://${absolutePath}`;
 
   const mod = (await import(fileUrl)) as PageModule;
-
   if (typeof mod.default !== "function") {
     throw new Error(`${filePath}: no default export found.`);
   }
 
-  const Component = mod.default;
-  const title = mod.title ?? filenameToTitle(basename(filePath));
-
-  // renderToStaticMarkup produces HTML without React hydration markers
-  const body = renderToStaticMarkup(React.createElement(Component));
-
-  return buildHtml({ title, body, headExtra: mod.head });
+  const body = renderToStaticMarkup(React.createElement(mod.default));
+  return buildHtml(body, head);
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-/** "my-awesome-page.tsx" → "My Awesome Page" */
-function filenameToTitle(filename: string): string {
-  const name = basename(filename, extname(filename));
-  return name
-    .replace(/[-_]/g, " ")
-    .replace(/([a-z])([A-Z])/g, "$1 $2")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
-}
 
 function routeFromFile(pagesDir: string, filePath: string): string {
   const rel = relative(pagesDir, filePath);
   const withoutExt = rel.replace(/\.(tsx|jsx)$/, "");
-  // index → /  |  about/index → /about/
   if (withoutExt === "index") return "/";
   return "/" + withoutExt.replace(/\/index$/, "/");
 }
 
-// ─── Main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
   console.log(`\n🚀 Pre-render starting`);
-  console.log(`   Pages  : ${PAGES_DIR}`);
-  console.log(`   Output : ${OUTPUT_DIR}\n`);
+  console.log(`   Pages      : ${PAGES_DIR}`);
+  console.log(`   Output     : ${OUTPUT_DIR}`);
+  console.log(`   Source HTML: ${SOURCE_HTML}\n`);
+
+  // Extract hashed asset tags once, reuse for every page
+  const assets = await extractAssets(SOURCE_HTML);
+  const head = injectAssets(Head, assets);
+
+  console.log(`   ✔ script → ${assets.scriptTag.match(/src=["']([^"']+)["']/)?.[1]}`);
+  console.log(`   ✔ css    → ${assets.linkTag.match(/href=["']([^"']+)["']/)?.[1]}\n`);
 
   await ensureDir(OUTPUT_DIR);
 
@@ -99,22 +101,17 @@ async function main() {
 
   for await (const entry of walk(PAGES_DIR, {
     includeDirs: false,
-    exts: [...SUPPORTED_EXTS].map((e) => e.slice(1)), // walk wants without dot
+    exts: [...SUPPORTED_EXTS].map((e) => e.slice(1)),
   })) {
     const route = routeFromFile(PAGES_DIR, entry.path);
 
-    console.log(route)
-
-    // Determine output path: "/" → index.html, "/about" → about/index.html
     const isRoot = route === "/";
-    const htmlRelative = isRoot
-      ? "index.html"
-      : join(route.slice(1), "index.html");
+    const htmlRelative = isRoot ? "index.html" : join(route.slice(1), "index.html");
     const outPath = join(OUTPUT_DIR, htmlRelative);
 
     try {
       await ensureDir(join(OUTPUT_DIR, isRoot ? "" : route.slice(1)));
-      const html = await renderPage(entry.path);
+      const html = await renderPage(entry.path, head);
       await Deno.writeTextFile(outPath, html);
       console.log(`  ✅  ${route.padEnd(30)} → ${outPath}`);
       results.push({ route, out: outPath, ok: true });
@@ -125,13 +122,12 @@ async function main() {
     }
   }
 
-  // ─── Summary ───────────────────────────────────────────────────────────────
   const ok = results.filter((r) => r.ok).length;
   const fail = results.filter((r) => !r.ok).length;
 
   console.log(`\n─────────────────────────────────────`);
   console.log(`  Done: ${ok} rendered, ${fail} failed`);
-  if (fail > 0) Deno.exit(1);
+  Deno.exit(fail > 0 ? 1 : 0);
 }
 
 main();
