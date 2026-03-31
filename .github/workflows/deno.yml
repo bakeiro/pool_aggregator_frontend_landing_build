@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +26,7 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          deno run -A dynamicContent/genBestPoolPages.ts
+          deno run -A dynamicContent/generateBestPoolPages.ts
           deno run -A dynamicContent/adaptBestPoolPages.ts
 
       - name: Commit & push changes
