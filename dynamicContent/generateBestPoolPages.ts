@@ -6,14 +6,14 @@ import { toPascalCase } from "./utils.ts";
 import "https://deno.land/std/dotenv/load.ts"; // needed?
 
 const SUPABASE_URL        = Deno.env.get("SUPABASE_URL") ?? "";
-const SUPABASE_PUBLISHABLE_DEFAULT_KEY = Deno.env.get("SUPABASE_PUBLISHABLE_DEFAULT_KEY") ?? "";
+const SUPABASE_PUBLISHABLE_KEY = Deno.env.get("SUPABASE_PUBLISHABLE_KEY") ?? "";
 
-if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_DEFAULT_KEY) {
-  console.error("❌  Faltan variables de entorno: SUPABASE_URL y SUPABASE_PUBLISHABLE_DEFAULT_KEY");
+if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
+  console.error("❌  Faltan variables de entorno: SUPABASE_URL y SUPABASE_PUBLISHABLE_KEY");
   Deno.exit(1);
 }
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_DEFAULT_KEY);
+const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
 interface Pool {
   pool_id:       number;
