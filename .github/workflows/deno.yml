@@ -24,7 +24,7 @@ jobs:
       - name: Run generation scripts
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
         run: |
           deno run -A dynamicContent/generateBestPoolPages.ts
           deno run -A dynamicContent/adaptBestPoolPages.ts
