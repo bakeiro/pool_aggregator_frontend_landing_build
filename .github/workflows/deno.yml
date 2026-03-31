@@ -28,6 +28,7 @@ jobs:
         run: |
           deno run -A dynamicContent/generateBestPoolPages.ts
           deno run -A dynamicContent/adaptBestPoolPages.ts
+          deno run -A dynamicContent/genSiteMap.ts
 
       - name: Commit & push changes
         run: |
