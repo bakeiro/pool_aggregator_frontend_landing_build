@@ -1,7 +1,4 @@
-# This workflow will install Deno then run `deno lint` and `deno test`.
-# For more information see: https://github.com/denoland/setup-deno
-
-name: Generate dynamic content (best pools & sitemap)
+name: Generate dynamic content
 
 on:
   schedule:
@@ -12,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,9 +24,9 @@ jobs:
       - name: Run generation scripts
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
         run: |
-          deno run -A dynamicContent/genBestPoolPages.ts
+          deno run -A dynamicContent/generateBestPoolPages.ts
           deno run -A dynamicContent/adaptBestPoolPages.ts
 
       - name: Commit & push changes
