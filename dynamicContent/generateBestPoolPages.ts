@@ -3,13 +3,10 @@ import { join }      from "https://deno.land/std@0.224.0/path/mod.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { toPascalCase } from "./utils.ts";
 
-import "https://deno.land/std/dotenv/load.ts";
+import "https://deno.land/std/dotenv/load.ts"; // needed?
 
-// const SUPABASE_URL        = Deno.env.get("SUPABASE_URL") ?? "";
-// const SUPABASE_PUBLISHABLE_DEFAULT_KEY = Deno.env.get("SUPABASE_PUBLISHABLE_DEFAULT_KEY") ?? "";
-
-const SUPABASE_URL = "https://bmxbmeddavspuxesnnxk.supabase.co";
-const SUPABASE_PUBLISHABLE_DEFAULT_KEY = "sb_publishable_4X5AMdPa5IB0C1e2sI_nrw_ImjzqEOD";
+const SUPABASE_URL        = Deno.env.get("SUPABASE_URL") ?? "";
+const SUPABASE_PUBLISHABLE_DEFAULT_KEY = Deno.env.get("SUPABASE_PUBLISHABLE_DEFAULT_KEY") ?? "";
 
 if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_DEFAULT_KEY) {
   console.error("❌  Faltan variables de entorno: SUPABASE_URL y SUPABASE_PUBLISHABLE_DEFAULT_KEY");
