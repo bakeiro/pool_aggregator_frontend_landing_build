@@ -191,7 +191,7 @@ export default function ${component}() {
             Best {chain} Pools on {dex}
           </h1>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto text-pretty">
-            Highest-volume liquidity pools on {dex} on {chain}. Data updated on every build.
+            Highest-volume liquidity pools on {dex} on {chain}. Data updated on every day.
           </p>
         </header>
 
