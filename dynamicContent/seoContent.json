@@ -1,0 +1,859 @@
+{
+  "bsc/pancakeswap": {
+    protocol: {
+      creator: "Equipo anónimo vinculado al ecosistema de Binance",
+      launched: "Septiembre 2020",
+      became_known: "Se convirtió en el DEX dominante de BNB Chain durante el boom del yield farming de 2020-2021, cuando las altas comisiones de Ethereum empujaron a millones de usuarios hacia redes más baratas. Sus pools de farming con recompensas en CAKE y su interfaz accesible lo catapultaron al top 3 global por volumen diario.",
+    },
+    description: `PancakeSwap is the undisputed liquidity leader on BNB Chain, consistently ranking among the top three decentralised exchanges globally by daily trading volume. Built natively for BNB Chain's high-throughput, low-fee environment, PancakeSwap V3 introduced concentrated liquidity — letting providers focus capital within tight price ranges to maximise fee earnings without deploying larger amounts of capital.
+
+BNB Chain processes blocks roughly every three seconds with gas costs that are a fraction of Ethereum's, making it practical to manage LP positions actively, rebalance ranges, and compound fees without worrying about transaction overhead eating into returns. This is especially relevant for smaller positions that would be uneconomical on mainnet.
+
+The pools listed here represent the highest-volume pairs on PancakeSwap V3 on BNB Chain, ranked by 24-hour trading activity. Alongside standard swap fees, select pools qualify for CAKE token emissions through PancakeSwap's gauge system, which can meaningfully supplement base fee income — particularly for stablecoin pairs where base APRs are thin.`,
+    faq: [
+      {
+        q: "Why is PancakeSwap the dominant DEX on BNB Chain?",
+        a: "PancakeSwap launched in 2020 as a native BNB Chain protocol, benefiting from first-mover advantage, deep integration with the BNB ecosystem, and Binance's user base. Its product suite — swaps, farms, lotteries, prediction markets, and NFTs — keeps daily active users high, which in turn drives consistent swap volume through its liquidity pools.",
+      },
+      {
+        q: "What fee tiers are available on PancakeSwap V3 on BNB Chain?",
+        a: "PancakeSwap V3 on BNB Chain offers four fee tiers: 0.01% for highly correlated pairs like USDC/USDT, 0.05% for liquid stable-to-volatile pairs, 0.25% for standard token pairs, and 1.00% for exotic or low-liquidity pairs. Choosing the right tier for your pair is important — a tier that is too low reduces your fee capture, while one that is too high pushes volume to competing pools.",
+      },
+      {
+        q: "Can I earn CAKE rewards by providing liquidity on BNB Chain?",
+        a: "Yes. PancakeSwap's gauge system directs CAKE token emissions to whitelisted pools based on weekly veCAKE votes. If a pool you provide liquidity in receives gauge weight, you earn CAKE on top of swap fees. The effective APR from CAKE rewards varies week to week depending on token price and vote allocation, so it is worth monitoring the gauge dashboard before choosing a pool.",
+      },
+      {
+        q: "Is impermanent loss lower on BNB Chain than on Ethereum?",
+        a: "The chain itself does not affect impermanent loss — IL is determined by the price volatility of the token pair you deposit. However, BNB Chain's lower gas costs make it cheaper to exit or rebalance a position when prices move, which can help limit realised losses in practice compared to Ethereum where rebalancing can cost tens of dollars in gas.",
+      },
+    ],
+  },
+
+  "bsc/sushiswap": {
+    protocol: {
+      creator: "Chef Nomi (pseudónimo anónimo), con posterior traspaso a la comunidad y dirección de core contributors como 0xMaki",
+      launched: "Agosto 2020",
+      became_known: "Ganó notoriedad instantánea en el verano DeFi de 2020 al ejecutar un 'vampire attack' sobre Uniswap, migrando más de 1.000 millones de dólares en liquidez en cuestión de días. Tras la controversia inicial por la venta de tokens del fundador, la comunidad tomó el control y consolidó SushiSwap como un protocolo multi-cadena con BentoBox y Kashi.",
+    },
+    description: `SushiSwap on BNB Chain offers a compelling alternative to native DEXs for liquidity providers who want access to cross-chain incentives and a protocol with a strong governance community. Deployed on BNB Chain as part of SushiSwap's multi-chain expansion, it inherits V3's concentrated liquidity mechanics while benefiting from BNB Chain's near-zero transaction fees and fast block times.
+
+One of SushiSwap's differentiators on BNB Chain is its integration with Trident and BentoBox, which allows capital deposited as liquidity to also be used as collateral in lending strategies — a capital efficiency feature not available on single-purpose DEXs. For sophisticated LPs, this opens up compounding strategies that go beyond simple fee collection.
+
+The pools shown here are the most actively traded pairs on SushiSwap on BNB Chain, ordered by 24-hour volume. A portion of every swap fee on SushiSwap is directed to the protocol treasury and to xSUSHI stakers, making it one of the few DEXs where holding the governance token gives direct fee exposure across all supported chains.`,
+    faq: [
+      {
+        q: "What makes SushiSwap different from PancakeSwap on BNB Chain?",
+        a: "While PancakeSwap is the native BNB Chain DEX with deeper liquidity in most pairs, SushiSwap brings cross-chain governance, the BentoBox capital efficiency layer, and a portion of fees directed to SUSHI stakers. For LPs who already hold SUSHI or want exposure to a multi-chain protocol, SushiSwap on BNB Chain is worth considering alongside the higher-volume alternatives.",
+      },
+      {
+        q: "How does SushiSwap V3 concentrated liquidity work on BNB Chain?",
+        a: "SushiSwap V3 on BNB Chain uses the same concentrated liquidity model as Uniswap V3 — providers choose a price range, and their capital only earns fees when the market price is within that range. BNB Chain's low gas fees make it practical to manage narrow ranges actively, which maximises fee yield but requires monitoring price movements to stay in range.",
+      },
+      {
+        q: "Does SushiSwap share fees with token holders on BNB Chain?",
+        a: "Yes. SushiSwap directs a portion of protocol fees across all chains — including BNB Chain — to xSUSHI stakers. This means that staking SUSHI in the SushiBar earns you a passive share of fees generated on BNB Chain pools, in addition to any direct LP positions you hold.",
+      },
+      {
+        q: "What are the main risks of providing liquidity on SushiSwap on BNB Chain?",
+        a: "The primary risks are impermanent loss from price divergence between your token pair, smart contract risk (though SushiSwap contracts are extensively audited), and liquidity fragmentation — BNB Chain has many competing DEXs, so some SushiSwap pools may have lower depth than equivalent pools on PancakeSwap, leading to higher price impact on large trades and reduced fee volume.",
+      },
+    ],
+  },
+
+  "bsc/uniswap": {
+    protocol: {
+      creator: "Hayden Adams",
+      launched: "Noviembre 2018 (V1 en Ethereum); desplegado en BNB Chain con V3 en 2023",
+      became_known: "Uniswap revolucionó DeFi al inventar el modelo AMM (Automated Market Maker) con su fórmula x*y=k. Se hizo mundialmente conocido durante el verano DeFi de 2020 con V2, y redefinió la provisión de liquidez en mayo de 2021 con V3 y el concepto de liquidez concentrada.",
+    },
+    description: `Uniswap V3 on BNB Chain represents an interesting positioning: the protocol that pioneered concentrated liquidity on Ethereum is now available on BNB Chain's high-speed, low-cost network, giving liquidity providers the choice to deploy under the Uniswap brand with BNB Chain's economics. For LPs already familiar with Uniswap's mechanics on Ethereum, the experience is nearly identical — but with dramatically lower gas costs.
+
+BNB Chain's three-second blocks mean that price updates and arbitrage happen faster than on Ethereum, which has implications for LP strategy. In high-volatility conditions, tighter price ranges get crossed more frequently, potentially leading to higher impermanent loss if positions are not actively managed. However, the low cost of rebalancing transactions makes active management far more practical than on mainnet.
+
+The pools on this page represent the top Uniswap pairs on BNB Chain by daily volume. While overall liquidity depth on BNB Chain is lower than Ethereum for Uniswap, certain pairs — particularly those bridged from Ethereum — can offer competitive fee yields given the lower competition for LP capital.`,
+    faq: [
+      {
+        q: "Is Uniswap on BNB Chain the same as Uniswap on Ethereum?",
+        a: "The smart contract logic is identical — Uniswap V3 is deployed from the same codebase across all supported chains. The differences are in liquidity depth (generally lower on BNB Chain), gas costs (much cheaper on BNB Chain), and the token ecosystem. Some pairs available on Ethereum mainnet may not exist or may have thinner liquidity on BNB Chain.",
+      },
+      {
+        q: "Why would I use Uniswap on BNB Chain instead of PancakeSwap?",
+        a: "The main reasons are familiarity with Uniswap's interface, specific pairs that have better depth on Uniswap, and the fact that some DeFi strategies and aggregators route through Uniswap contracts specifically. PancakeSwap generally has deeper liquidity for BNB-native pairs, but Uniswap on BNB Chain can be competitive for bridged assets.",
+      },
+      {
+        q: "What fee tiers does Uniswap V3 offer on BNB Chain?",
+        a: "Uniswap V3 on BNB Chain uses the same four fee tiers as on Ethereum: 0.01% for stablecoin pairs, 0.05% for correlated assets, 0.30% for standard token pairs, and 1.00% for exotic pairs. The same tier selection logic applies — match the fee tier to the volatility profile of your pair.",
+      },
+      {
+        q: "How does bridging affect Uniswap liquidity on BNB Chain?",
+        a: "Most tokens on BNB Chain that originate on Ethereum are bridged versions, which means their liquidity is split across two chains. This can create arbitrage opportunities between the two chains but also means that individual pool depths may be shallower than on mainnet. Always check TVL and volume before entering a position to ensure there is sufficient activity to generate meaningful fee returns.",
+      },
+    ],
+  },
+
+  // ─── BASE ───────────────────────────────────────────────────────────────────
+
+  "base/aerodrome": {
+    protocol: {
+      creator: "El equipo de Velodrome Finance, con figuras como @gabagool y colaboradores del ecosistema Optimism",
+      launched: "Agosto 2023, coincidiendo con el lanzamiento público de Base",
+      became_known: "Aerodrome se convirtió en el DEX dominante de Base en cuestión de semanas desde su lanzamiento, superando en TVL al propio Velodrome (su protocolo hermano en Optimism) en pocos meses. Su modelo ve(3,3) y los agresivos incentivos de arranque atrajeron a los principales protocolos de Base, que necesitaban liquidez profunda para sus tokens desde el primer día.",
+    },
+    description: `Aerodrome is the dominant liquidity protocol on Base, routinely accounting for the majority of the chain's total DEX volume. Built on the ve(3,3) model pioneered by Velodrome on Optimism, Aerodrome aligns incentives between liquidity providers, AERO token holders, and the protocols that rely on deep liquidity — creating a self-reinforcing flywheel that has made it the go-to liquidity layer for Base-native projects.
+
+The ve(3,3) mechanic works as follows: each week, AERO token emissions are distributed to liquidity pools based on votes cast by veAERO holders — users who have locked their AERO for up to four years. Protocols that want deep liquidity for their tokens can bribe veAERO voters with additional rewards, incentivising votes toward their pools. This creates a competitive market for liquidity that tends to concentrate volume and fees in the most strategically important pairs.
+
+Base itself is Coinbase's Layer 2, built on the OP Stack and benefiting from EIP-4844 blob data for ultra-low transaction costs. This makes Aerodrome pools particularly attractive for active LPs who want to rebalance positions frequently — something that would be prohibitively expensive on Ethereum mainnet.`,
+    faq: [
+      {
+        q: "How does Aerodrome's ve(3,3) model benefit liquidity providers?",
+        a: "In the ve(3,3) model, liquidity providers earn swap fees from their pools, while veAERO voters earn fees from the pools they vote for. This creates a dynamic where protocols wanting deep liquidity bribe voters with extra rewards — increasing the total yield for veAERO holders. As an LP, you benefit indirectly because high bribe activity attracts more AERO emissions to competitive pools, boosting effective APRs.",
+      },
+      {
+        q: "What is the difference between volatile and stable pools on Aerodrome?",
+        a: "Aerodrome offers two pool types. Stable pools use a StableSwap invariant optimised for correlated assets like USDC/USDT or liquid staking token pairs, offering very low slippage. Volatile pools use a standard constant-product formula suitable for uncorrelated pairs like ETH/USDC. Choosing the wrong pool type for your pair significantly impacts both slippage and fee efficiency.",
+      },
+      {
+        q: "Is Base a safe network for DeFi liquidity provision?",
+        a: "Base is a rollup that inherits Ethereum's security for transaction settlement, with Coinbase providing additional operational oversight. It has one of the fastest-growing TVLs among all L2s and has maintained a strong security track record since launch. As with any L2, the main risk beyond smart contract exploits is the sequencer — Base currently uses a centralised sequencer, though withdrawals to Ethereum remain permissionless.",
+      },
+      {
+        q: "How often are AERO emissions distributed on Base?",
+        a: "AERO emissions are distributed weekly, at the start of each epoch. veAERO holders vote during the current epoch to allocate emissions for the next epoch. This means pool APRs from AERO rewards can change significantly week to week depending on vote outcomes and token price movements.",
+      },
+      {
+        q: "Can I provide liquidity on Aerodrome without locking AERO?",
+        a: "Yes — you can provide liquidity to any Aerodrome pool and earn swap fees without holding or locking any AERO. However, you will not receive AERO emissions unless the pool you are in receives votes from veAERO holders. Locking AERO gives you voting rights and a share of fees from voted pools, but it is entirely optional for basic liquidity provision.",
+      },
+    ],
+  },
+
+  "base/pancakeswap": {
+    protocol: {
+      creator: "Equipo anónimo vinculado al ecosistema de Binance",
+      launched: "Septiembre 2020 (en BNB Chain); desplegado en Base con V3 en 2023",
+      became_known: "Se convirtió en el DEX dominante de BNB Chain durante el boom del yield farming de 2020-2021, cuando las altas comisiones de Ethereum empujaron a millones de usuarios hacia redes más baratas. Su expansión multi-cadena posterior lo llevó a despliegues en Base, Ethereum, Arbitrum y otras redes.",
+    },
+    description: `PancakeSwap's deployment on Base brings its V3 concentrated liquidity infrastructure to Coinbase's Layer 2, offering an alternative venue for LPs who want access to Base's fast finality and low fees under a familiar interface. While Aerodrome dominates Base's native liquidity, PancakeSwap's brand recognition and cross-chain consistency make it the preferred choice for LPs managing positions across multiple networks from a single protocol.
+
+Base's OP Stack foundation, combined with EIP-4844 data blobs, keeps transaction costs well below a dollar for most operations — making concentrated liquidity management genuinely practical for positions of modest size. Rebalancing a price range, collecting fees, or adjusting a position costs a fraction of what it would on Ethereum mainnet, removing one of the main barriers to active LP strategies.
+
+The pools listed here are the highest-volume PancakeSwap V3 pairs on Base, ranked by 24-hour trading activity. As Base's DeFi ecosystem continues to grow — driven by Coinbase's distribution and a wave of consumer-facing applications — overall DEX volume on the chain has increased consistently, benefiting fee yields across all active pools.`,
+    faq: [
+      {
+        q: "How does PancakeSwap on Base compare to Aerodrome?",
+        a: "Aerodrome is the dominant DEX on Base by TVL and volume, benefiting from its native ve(3,3) incentive model and deep integration with Base protocols. PancakeSwap on Base offers a familiar interface for LPs who use PancakeSwap on other chains, and may have better depth for specific pairs — particularly those involving tokens that are more established on BNB Chain than in the Base-native ecosystem.",
+      },
+      {
+        q: "What gas costs should I expect when providing liquidity on Base?",
+        a: "Base transaction fees are typically in the range of a few cents to under a dollar for standard LP operations like adding/removing liquidity or collecting fees. EIP-4844 blob transactions have significantly reduced L2 data costs since early 2024, making Base one of the cheapest environments for active LP management among all major networks.",
+      },
+      {
+        q: "Are CAKE rewards available for PancakeSwap pools on Base?",
+        a: "CAKE emissions on Base follow PancakeSwap's cross-chain gauge system. Select pools on Base may receive CAKE rewards based on veCAKE votes, but the allocation is generally smaller than on BNB Chain where PancakeSwap has its deepest liquidity and highest trading volume. Check the PancakeSwap farms dashboard to see current emission rates for specific pools.",
+      },
+      {
+        q: "What tokens are most actively traded on PancakeSwap on Base?",
+        a: "The most active pairs on PancakeSwap on Base tend to centre around ETH, USDC, and cbETH — the core assets of the Base ecosystem. As Base grows, more native tokens are likely to develop meaningful liquidity on the platform. The top 10 pools shown on this page reflect current volume leadership updated daily.",
+      },
+    ],
+  },
+
+  "base/sushiswap": {
+    protocol: {
+      creator: "Chef Nomi (pseudónimo anónimo), con posterior traspaso a la comunidad y dirección de core contributors como 0xMaki",
+      launched: "Agosto 2020 (en Ethereum); desplegado en Base con V3 en 2023",
+      became_known: "Ganó notoriedad instantánea en el verano DeFi de 2020 al ejecutar un 'vampire attack' sobre Uniswap, migrando más de 1.000 millones de dólares en liquidez en cuestión de días. Tras la controversia inicial, la comunidad tomó el control y consolidó SushiSwap como un protocolo multi-cadena con presencia en más de 20 redes.",
+    },
+    description: `SushiSwap on Base gives liquidity providers access to a battle-tested multi-chain DEX on one of Ethereum's fastest-growing Layer 2 networks. With Base's low transaction costs and SushiSwap's V3 concentrated liquidity model, LPs can deploy capital efficiently and manage positions with minimal overhead — a combination that works particularly well for pairs with moderate volatility where tight price ranges are a viable strategy.
+
+SushiSwap's cross-chain architecture means that liquidity data, fee statistics, and governance participation are consistent across all deployed networks. For LPs who already use SushiSwap on Ethereum or Arbitrum, Base is simply another network in the same interface rather than a new protocol to learn. This consistency also makes it easier to compare pool performance across chains and move capital to where it is most productive.
+
+Base is built on the OP Stack and secured by Ethereum, with Coinbase providing operational infrastructure. The chain's integration with Coinbase's products drives a consistent flow of new users and assets onto the network, which contributes to growing DEX volume across all protocols including SushiSwap.`,
+    faq: [
+      {
+        q: "Why use SushiSwap on Base instead of a native Base DEX?",
+        a: "SushiSwap makes sense for LPs who already have positions on SushiSwap across multiple chains and want a unified interface, or for those who hold SUSHI and want to earn a share of fees generated on Base. Native Base DEXs like Aerodrome may offer deeper liquidity for the most popular pairs, but SushiSwap can be competitive for cross-chain token pairs that have more history on Ethereum.",
+      },
+      {
+        q: "How does SushiSwap V3 concentrated liquidity work on Base?",
+        a: "SushiSwap V3 on Base uses tick-based concentrated liquidity, identical to Uniswap V3. You select a price range for your position, and your capital earns fees only when the spot price trades within that range. On Base, the cost of adjusting your range is very low — typically a few cents — so active range management is a practical strategy rather than an occasional necessity.",
+      },
+      {
+        q: "Does SushiSwap on Base contribute to xSUSHI rewards?",
+        a: "Yes. SushiSwap's fee-sharing mechanism applies across all deployed chains. A portion of swap fees generated on Base pools flows into the SushiSwap protocol treasury and is distributed to xSUSHI stakers. The absolute amount depends on Base's trading volume relative to other chains where SushiSwap is deployed.",
+      },
+      {
+        q: "What are the main token pairs on SushiSwap on Base?",
+        a: "The most liquid SushiSwap pools on Base typically involve ETH, USDC, WBTC, and major Base-native tokens. The exact composition of the top 10 changes daily based on trading activity — the table above reflects today's rankings. Pairs involving newer Base-native tokens may appear when they experience volume spikes.",
+      },
+    ],
+  },
+
+  "base/uniswap": {
+    protocol: {
+      creator: "Hayden Adams",
+      launched: "Noviembre 2018 (V1 en Ethereum); desplegado en Base con V3 en 2023",
+      became_known: "Uniswap revolucionó DeFi al inventar el modelo AMM con su fórmula x*y=k. Se hizo mundialmente conocido durante el verano DeFi de 2020 con V2, y redefinió la provisión de liquidez en mayo de 2021 con V3 y el concepto de liquidez concentrada, modelo que hoy domina la industria.",
+    },
+    description: `Uniswap on Base is one of the most natural pairings in DeFi: the leading decentralised exchange protocol deployed on Coinbase's Layer 2, combining Uniswap's deep liquidity network effects with Base's low-cost settlement. Uniswap V3 on Base has grown to become one of the largest sources of DEX volume on the network, supported by integrations with major aggregators and wallets that route trades through Uniswap contracts by default.
+
+UniChain — Uniswap's own dedicated rollup — exists separately for protocol-native activity, but Base remains a key deployment for Uniswap because of its large user base and strong stablecoin liquidity. Many of the most traded token pairs on Base — particularly those involving USDC, which Coinbase natively supports — have found a home in Uniswap V3 pools where concentrated liquidity keeps spreads tight.
+
+For liquidity providers, Base's economics are compelling: EIP-4844 has brought L2 data costs to a fraction of pre-2024 levels, meaning that operations like fee collection, position adjustment, and range rebalancing cost well under a dollar. This makes concentrated liquidity strategies viable even for positions that would have been too small to manage actively on Ethereum mainnet.`,
+    faq: [
+      {
+        q: "What is the relationship between Uniswap on Base and UniChain?",
+        a: "UniChain is Uniswap's own dedicated rollup, designed to optimise for Uniswap-specific use cases like MEV reduction and faster settlement for swaps. Base is a general-purpose L2 where Uniswap is one of many deployed protocols. For liquidity providers, Base offers a larger and more diverse user base, while UniChain is more focused on Uniswap-native activity. Both are valid venues depending on the pair.",
+      },
+      {
+        q: "Why is USDC liquidity particularly strong on Uniswap Base?",
+        a: "Coinbase operates as a major USDC issuer and natively supports USDC on Base. This means a large flow of USDC enters the Base ecosystem directly from Coinbase accounts, without needing to bridge from another chain. Deep USDC supply makes USDC/ETH and USDC/USDT pools on Uniswap Base particularly active, generating strong and consistent fee revenue for LPs in those pools.",
+      },
+      {
+        q: "How do I manage a concentrated liquidity position on Uniswap Base?",
+        a: "You can manage positions directly through app.uniswap.org by selecting Base as your network. Setting your price range, monitoring whether your position is in range, collecting accrued fees, and adjusting the range are all standard operations. On Base, each of these actions costs a few cents in gas, so active management is practical. Third-party tools like Revert Finance also support Base and provide analytics for your positions.",
+      },
+      {
+        q: "What happens to my liquidity if the price goes out of my range on Base?",
+        a: "When the market price moves outside your chosen range, your position stops earning fees and becomes entirely composed of one token — the less valuable one relative to current price. Your capital is not lost, but it earns nothing until price returns to your range. On Base, the low cost of rebalancing means you can adjust your range quickly when this happens without losing a significant portion of your position to gas.",
+      },
+    ],
+  },
+
+  // ─── LINEA ──────────────────────────────────────────────────────────────────
+
+  "linea/pancakeswap": {
+    protocol: {
+      creator: "Equipo anónimo vinculado al ecosistema de Binance",
+      launched: "Septiembre 2020 (en BNB Chain); desplegado en Linea con V3 en 2023",
+      became_known: "Se convirtió en el DEX dominante de BNB Chain durante el boom del yield farming de 2020-2021. Su expansión multi-cadena lo llevó a Linea como parte de su estrategia de presencia en todos los principales entornos EVM.",
+    },
+    description: `PancakeSwap on Linea brings its V3 concentrated liquidity model to Consensys's zkEVM rollup — one of the few zero-knowledge proof-based Layer 2s that is fully EVM-equivalent. Linea's zkEVM architecture means that smart contracts deploy and behave exactly as they would on Ethereum mainnet, while benefiting from substantially lower transaction costs and faster confirmation times.
+
+PancakeSwap's V3 deployment on Linea is part of its broader multi-chain strategy, which now spans over a dozen networks. For LPs, Linea offers an interesting combination: the cryptographic security guarantees of zero-knowledge proofs (stronger than optimistic rollups in terms of fraud proof assumptions) with the gas economics of an L2. Liquidity on Linea is still growing relative to more established chains, which can mean less competition for LP capital in the pools that do see activity.
+
+The pools shown here are the most traded PancakeSwap V3 pairs on Linea by 24-hour volume. As Linea's DeFi ecosystem matures — backed by Consensys's MetaMask and Infura integrations — volume across all DEXs on the chain is expected to grow, which will benefit fee yields for early liquidity providers.`,
+    faq: [
+      {
+        q: "What is Linea and how does it differ from other L2s?",
+        a: "Linea is a zkEVM rollup developed by Consensys, the company behind MetaMask and Infura. Unlike optimistic rollups (Arbitrum, Optimism, Base), which assume transactions are valid unless challenged, Linea uses zero-knowledge proofs to cryptographically verify every batch of transactions before it is finalised on Ethereum. This provides stronger security guarantees and enables faster withdrawals to Ethereum without a challenge period.",
+      },
+      {
+        q: "Is liquidity on Linea deep enough to generate meaningful LP returns?",
+        a: "Linea is a newer chain, so TVL and volume are lower than on Ethereum or Arbitrum. However, this also means less competition for LP capital in active pools — a smaller number of LPs share the fees generated by available volume. The key is to focus on pairs with genuine trading activity rather than pools with high TVL but low volume. The top 10 table above reflects actual daily volume on Linea.",
+      },
+      {
+        q: "How does PancakeSwap V3 work on a zkEVM chain like Linea?",
+        a: "PancakeSwap V3 on Linea behaves identically to its deployment on any other EVM chain. The zkEVM layer handles proof generation and verification transparently — as an LP, your experience of adding liquidity, setting price ranges, and collecting fees is the same as on BNB Chain or Base. The zkEVM ensures that all state transitions are verifiably correct, adding a layer of mathematical security to every transaction.",
+      },
+      {
+        q: "What assets can I provide liquidity for on PancakeSwap Linea?",
+        a: "The most active pairs on Linea tend to involve ETH, USDC, USDT, and wstETH — the primary bridged assets. PancakeSwap on Linea also supports any ERC-20 token that has been bridged to the network. As the Linea ecosystem grows, more native tokens will develop meaningful trading volume, creating new LP opportunities beyond the core asset pairs.",
+      },
+    ],
+  },
+
+  "linea/sushiswap": {
+    protocol: {
+      creator: "Chef Nomi (pseudónimo anónimo), con posterior traspaso a la comunidad y dirección de core contributors como 0xMaki",
+      launched: "Agosto 2020 (en Ethereum); desplegado en Linea con V3 en 2023",
+      became_known: "Ganó notoriedad en el verano DeFi de 2020 con el 'vampire attack' sobre Uniswap. Su estrategia multi-cadena agresiva lo llevó a Linea dado el respaldo de Consensys (empresa detrás de MetaMask e Infura), que representa un canal de distribución estratégico para cualquier DEX.",
+    },
+    description: `SushiSwap on Linea extends the protocol's multi-chain presence to Consensys's zkEVM rollup, offering liquidity providers a venue that combines SushiSwap's established fee-sharing model with Linea's zero-knowledge proof security. For LPs who value the strongest possible cryptographic guarantees for their on-chain positions, Linea's zkEVM architecture provides assurances that optimistic rollups cannot — all state transitions are mathematically verified before finalisation on Ethereum.
+
+Linea's integration with MetaMask — the most widely used self-custody wallet with over 30 million monthly active users — provides a natural funnel for new users onto the network. As MetaMask increasingly highlights Linea as a recommended network for its users, DeFi activity on Linea is likely to grow, which will translate into higher volume through SushiSwap pools and better fee yields for LPs positioned early.
+
+SushiSwap's V3 concentrated liquidity on Linea follows the same mechanics as on all other supported chains: providers select a price range, earn fees proportional to their share of active liquidity, and can adjust positions as market conditions change. Linea's low gas costs make position management practical even for modest capital amounts.`,
+    faq: [
+      {
+        q: "Why is SushiSwap deployed on Linea?",
+        a: "SushiSwap's strategy is to deploy on every major EVM-compatible network to capture volume from users who prefer to stay within a single protocol interface regardless of which chain they are on. Linea's backing by Consensys and its MetaMask integration make it a strategically important chain for any multi-chain DEX, as MetaMask's user base represents a large potential source of swap volume.",
+      },
+      {
+        q: "How do zero-knowledge proofs on Linea affect LP security?",
+        a: "zkEVM proofs ensure that every batch of transactions submitted to Ethereum is cryptographically verified as correct before it is accepted. This means that unlike optimistic rollups — where invalid transactions can in theory be submitted and must be challenged within a window — Linea's proofs make it mathematically impossible to finalise an incorrect state. For LPs, this means a higher degree of certainty that their on-chain balances are accurately represented.",
+      },
+      {
+        q: "What is the withdrawal process from Linea to Ethereum?",
+        a: "Withdrawing from Linea to Ethereum is faster than from optimistic rollups like Arbitrum or Optimism because there is no seven-day challenge period. zkEVM proof finality means withdrawals can settle in a matter of hours rather than days. Third-party bridges also offer near-instant liquidity for users who need to move assets quickly.",
+      },
+      {
+        q: "How does SushiSwap's fee structure work on Linea?",
+        a: "SushiSwap on Linea uses the same fee tiers as on other V3 deployments: 0.05%, 0.30%, and 1.00%. A portion of fees is directed to the SushiSwap protocol treasury and distributed to xSUSHI stakers across all chains. LP earnings on Linea depend entirely on the volume generated in the pools they provide liquidity for — there are currently no additional SUSHI emission incentives specific to Linea.",
+      },
+    ],
+  },
+
+  // ─── SOLANA ─────────────────────────────────────────────────────────────────
+
+  "solana/orca": {
+    protocol: {
+      creator: "Grace Kwan y Jordan Sehnert",
+      launched: "Febrero 2021",
+      became_known: "Orca se posicionó rápidamente como el DEX más user-friendly de Solana, ganando tracción durante el boom del ecosistema Solana en el segundo semestre de 2021. El lanzamiento de Whirlpools en 2022 — su implementación de liquidez concentrada diseñada nativamente para Solana — lo consolidó como la referencia técnica del ecosistema, compitiendo directamente con Raydium por el liderazgo en volumen.",
+    },
+    description: `Orca is the leading concentrated liquidity DEX on Solana, combining Solana's sub-second transaction finality and near-zero fees with a purpose-built liquidity model called Whirlpools. Unlike EVM-based concentrated liquidity implementations that adapted Uniswap V3's architecture, Orca's Whirlpools were designed from the ground up for Solana's parallel transaction execution model — enabling more efficient price range management and lower computational overhead per swap.
+
+Solana's architecture is fundamentally different from EVM chains: it processes transactions in parallel rather than sequentially, achieves 400ms slot times, and charges fees measured in fractions of a cent. For liquidity providers, this translates to an environment where active position management — adjusting ranges, compounding fees, responding to price movements — is genuinely cheap and fast. Strategies that would require significant automation on Ethereum are manual and routine on Solana.
+
+The pools shown here represent the most active Whirlpool pairs on Orca by 24-hour volume. Solana's DeFi ecosystem is distinct from Ethereum's, with a strong native token culture, active meme coin trading, and deep liquidity in SOL and USDC pairs — all of which drive consistent volume through Orca's pools.`,
+    faq: [
+      {
+        q: "What are Orca Whirlpools and how do they differ from Uniswap V3?",
+        a: "Orca Whirlpools are Solana's native concentrated liquidity implementation. While they use the same conceptual model as Uniswap V3 — providers choose price ranges, capital earns fees only when in range — Whirlpools are built specifically for Solana's account model and parallel execution. This makes them more gas-efficient on Solana than a direct port of Uniswap V3 would be, and they integrate natively with Solana's transaction pipeline.",
+      },
+      {
+        q: "How does Solana's speed affect liquidity provision on Orca?",
+        a: "Solana's 400ms slot times mean that arbitrageurs can react to price changes extremely quickly, which tightens spreads but also means LP positions face more rapid price movement relative to the cost of rebalancing. The upside is that fees accrue quickly in high-volume conditions, and rebalancing a position costs a fraction of a cent, making active management far more practical than on any EVM chain.",
+      },
+      {
+        q: "What are the main risks of providing liquidity on Orca?",
+        a: "The primary risks are impermanent loss from SOL's price volatility (for pairs involving SOL), smart contract risk, and Solana network-level risk. Solana has experienced notable outages in the past, though network stability has improved significantly. Unlike Ethereum L2s, Solana does not inherit Ethereum's security — it is an independent consensus mechanism, so the security assumptions are different.",
+      },
+      {
+        q: "Can I earn ORCA token rewards by providing liquidity?",
+        a: "Orca has moved away from direct ORCA token emissions as the primary incentive, focusing instead on fee revenue as the sustainable LP yield model. Some pools may receive third-party incentive rewards from projects that want to bootstrap liquidity for their tokens, but this varies pool by pool. The fee revenue from Whirlpools in active markets has historically been competitive with incentivised pools on EVM chains.",
+      },
+      {
+        q: "How do I manage a Whirlpool position on Orca?",
+        a: "Orca positions are managed through orca.so or compatible wallets like Phantom. You select a pool, choose a price range, and deposit both tokens. Because Solana fees are so low, you can check and adjust positions as frequently as you like. Orca also provides position analytics showing your current in-range status, accrued fees, and estimated APR — making it straightforward to monitor performance without third-party tools.",
+      },
+    ],
+  },
+
+  // ─── POLYGON ────────────────────────────────────────────────────────────────
+
+  "polygon/quickswap": {
+    protocol: {
+      creator: "Roc Zacharias y Nick Cowan",
+      launched: "Octubre 2020",
+      became_known: "QuickSwap fue el primer DEX importante en lanzarse en Polygon (entonces Matic Network) y se convirtió en la puerta de entrada al ecosistema DeFi de Polygon durante su explosivo crecimiento en 2021. Cuando Ethereum estaba congestionado y las comisiones superaban los 100 dólares por transacción, QuickSwap ofrecía las mismas operaciones por fracciones de centavo, atrayendo a millones de nuevos usuarios.",
+    },
+    description: `QuickSwap is the native DEX of Polygon PoS, having launched alongside the network's rise in 2021 and maintaining deep liquidity across the broadest range of Polygon-native pairs. QuickSwap V3 introduced concentrated liquidity through a partnership with Algebra Protocol, adding dynamic fee tiers that automatically adjust based on market volatility — a feature that distinguishes it from fixed-tier DEXs and can improve fee capture during periods of high price movement.
+
+Polygon PoS processes transactions in roughly two seconds with gas costs measured in fractions of a cent, making it one of the most accessible networks for DeFi users who are cost-sensitive. This has driven strong retail adoption, particularly in emerging markets where Ethereum mainnet fees are prohibitive. The resulting user base generates consistent swap volume through QuickSwap, supporting LP returns across a wide range of pairs.
+
+The QUICK token plays a role beyond governance: staking QUICK in dQUICK gives holders a share of protocol fees across all QuickSwap pools on Polygon, providing an additional income stream for liquidity providers who want exposure to the protocol's overall success rather than specific pairs.`,
+    faq: [
+      {
+        q: "What makes QuickSwap unique compared to other DEXs on Polygon?",
+        a: "QuickSwap was the first major DEX on Polygon and has the deepest native liquidity for Polygon-specific tokens. Its V3 implementation uses Algebra Protocol's dynamic fee system, which adjusts fees based on real-time volatility rather than fixed tiers. This means LPs in volatile markets automatically collect higher fees without needing to move to a different fee tier pool.",
+      },
+      {
+        q: "How do dynamic fees work on QuickSwap V3?",
+        a: "Unlike Uniswap V3 where fee tiers are fixed at pool creation, QuickSwap V3 (via Algebra) uses an algorithm that increases fees when price volatility rises and decreases them when markets are calm. In practice, this means a MATIC/USDC pool might charge 0.05% during a stable period and automatically shift to a higher effective fee rate during a sharp price move — compensating LPs for elevated impermanent loss risk.",
+      },
+      {
+        q: "Is MATIC or POL used for gas on Polygon?",
+        a: "Polygon has migrated from MATIC to POL as its native gas and staking token as part of the Polygon 2.0 upgrade. Gas fees remain extremely low — typically a fraction of a cent per transaction — and you need a small amount of POL in your wallet to pay for interactions with QuickSwap pools on Polygon PoS.",
+      },
+      {
+        q: "What are the main LP opportunities on QuickSwap?",
+        a: "QuickSwap has the deepest liquidity for Polygon-native tokens and for assets bridged from Ethereum. The highest-volume pools typically involve USDC, USDT, WETH, WBTC, and MATIC/POL. QuickSwap also frequently has strong liquidity for gaming and NFT-related tokens given Polygon's significant presence in those sectors.",
+      },
+    ],
+  },
+
+  "polygon/sushiswap": {
+    protocol: {
+      creator: "Chef Nomi (pseudónimo anónimo), con posterior traspaso a la comunidad y dirección de core contributors como 0xMaki",
+      launched: "Agosto 2020 (en Ethereum); desplegado en Polygon en 2021",
+      became_known: "Tras el 'vampire attack' sobre Uniswap que lo lanzó a la fama, SushiSwap adoptó una agresiva estrategia multi-cadena. Polygon fue uno de sus despliegues más tempranos fuera de Ethereum, aprovechando el boom de adopción de la red en 2021.",
+    },
+    description: `SushiSwap on Polygon PoS has maintained a consistent presence on the network since Polygon's DeFi boom in 2021, offering an alternative to native DEXs for LPs who prefer SushiSwap's multi-chain interface and fee-sharing model. Polygon's combination of fast two-second blocks and sub-cent gas fees makes it one of the most practical environments for active LP management, and SushiSwap V3's concentrated liquidity model takes full advantage of that.
+
+Polygon has a notably diverse DeFi user base — strong retail participation from Asia and Latin America, significant gaming and NFT activity, and growing institutional interest following Polygon's rebranding to a broader Layer 2 ecosystem. This diversity drives volume across a wide range of token pairs beyond the standard blue-chip assets, creating LP opportunities that don't exist on more narrowly focused chains.
+
+The pools listed here represent the most actively traded SushiSwap V3 pairs on Polygon by 24-hour volume. SushiSwap's presence on Polygon is particularly notable for pairs involving tokens that are more established in the Ethereum ecosystem than in Polygon's native token landscape — bridged assets often find deeper liquidity on SushiSwap than on QuickSwap for these pairs.`,
+    faq: [
+      {
+        q: "How does SushiSwap compete with QuickSwap on Polygon?",
+        a: "QuickSwap has the advantage of being the native Polygon DEX with deeper liquidity for Polygon-native tokens. SushiSwap competes primarily on cross-chain consistency — LPs who use SushiSwap across Ethereum, Arbitrum, and Base can manage all their positions in one interface including their Polygon positions. SushiSwap may also have better depth for Ethereum-origin tokens that are more established on SushiSwap's mainnet pools.",
+      },
+      {
+        q: "What is the cost of managing an LP position on Polygon?",
+        a: "Polygon PoS gas fees are extremely low — typically $0.001 to $0.01 per transaction. Adding or removing liquidity, collecting fees, and adjusting price ranges all cost a fraction of a cent. This makes Polygon one of the most cost-efficient chains for active LP management, as transaction overhead is essentially negligible compared to the fee income from even modest positions.",
+      },
+      {
+        q: "Does Polygon PoS security differ from Ethereum L2s?",
+        a: "Yes. Polygon PoS is a sidechain rather than a true Ethereum L2 — it has its own validator set and consensus mechanism rather than inheriting Ethereum's security directly. This means the security model is different from rollups like Arbitrum or Base. Polygon 2.0 is transitioning toward a zkEVM rollup architecture (Polygon zkEVM) that does settle on Ethereum, but the PoS chain remains a sidechain.",
+      },
+      {
+        q: "Are there SUSHI rewards for Polygon liquidity providers?",
+        a: "SushiSwap does not currently run dedicated SUSHI emission programs for Polygon pools. LP income on SushiSwap Polygon comes from swap fees, with a portion flowing to xSUSHI stakers. Some pools may receive third-party incentives from projects bootstrapping liquidity for their Polygon tokens, but these are project-specific and temporary.",
+      },
+    ],
+  },
+
+  "polygon/uniswap": {
+    protocol: {
+      creator: "Hayden Adams",
+      launched: "Noviembre 2018 (V1 en Ethereum); desplegado en Polygon con V3 en 2021",
+      became_known: "Uniswap inventó el modelo AMM moderno y se convirtió en el DEX de referencia de Ethereum durante el verano DeFi de 2020. Su despliegue en Polygon fue uno de sus primeros movimientos multi-cadena, aprovechando la explosión de adopción de la red durante 2021.",
+    },
+    description: `Uniswap V3 on Polygon PoS brings the protocol's concentrated liquidity model to one of the most widely used EVM-compatible sidechains, combining Uniswap's deep brand recognition and liquidity network effects with Polygon's near-zero gas costs. Uniswap on Polygon was one of the protocol's earliest multi-chain deployments and has maintained substantial liquidity — particularly in stablecoin and blue-chip pairs — since launching.
+
+Polygon's accessibility has attracted a large and diverse user base, and many of those users interact with DeFi through Uniswap's interface, which prominently features Polygon as a supported network. This consistent retail flow contributes to reliable swap volume in Uniswap's core pairs on Polygon, making fee yields relatively predictable compared to newer or less-trafficked chains.
+
+For liquidity providers, the combination of Uniswap V3's capital-efficient concentrated liquidity with Polygon's sub-cent gas means that the overhead of managing positions — adjusting ranges, collecting fees, rebalancing — is minimal. Strategies that require frequent intervention are practical in a way that simply isn't feasible on Ethereum mainnet.`,
+    faq: [
+      {
+        q: "How does Uniswap V3 on Polygon compare to Uniswap on Ethereum?",
+        a: "The smart contract mechanics are identical, but Polygon offers dramatically lower gas costs and faster confirmations. Liquidity depth is generally lower on Polygon than on Ethereum for most pairs, but so is competition for LP capital — meaning fee yields per dollar deposited can be competitive. Polygon is particularly attractive for active LP strategies that require frequent position adjustments.",
+      },
+      {
+        q: "What are the most liquid Uniswap pools on Polygon?",
+        a: "The highest-volume Uniswap V3 pools on Polygon consistently involve USDC, USDT, WETH, WBTC, and MATIC/POL. The top 10 table on this page is updated daily and reflects current volume rankings. Stablecoin pools tend to be the most consistently active due to high demand for low-slippage stablecoin swaps from DeFi users and protocols operating on Polygon.",
+      },
+      {
+        q: "Can I bridge assets to Polygon to provide liquidity on Uniswap?",
+        a: "Yes. The Polygon Bridge allows you to move ERC-20 tokens from Ethereum to Polygon PoS. The official bridge has a ~3-hour confirmation window. Third-party bridges like Across, Stargate, and Hop offer faster transfers. Once on Polygon, you need a small amount of POL (formerly MATIC) to pay gas fees for Uniswap interactions.",
+      },
+      {
+        q: "What fee tiers are available on Uniswap V3 Polygon?",
+        a: "Uniswap V3 on Polygon offers the same four fee tiers as on all other deployments: 0.01% for highly correlated stablecoin pairs, 0.05% for liquid correlated assets, 0.30% for standard volatile pairs, and 1.00% for exotic or low-liquidity pairs. The tier selection logic is the same regardless of chain — match the fee tier to the price volatility characteristics of your chosen pair.",
+      },
+    ],
+  },
+
+  // ─── ARBITRUM ───────────────────────────────────────────────────────────────
+
+  "arbitrum/pancakeswap": {
+    protocol: {
+      creator: "Equipo anónimo vinculado al ecosistema de Binance",
+      launched: "Septiembre 2020 (en BNB Chain); desplegado en Arbitrum con V3 en 2023",
+      became_known: "Nacido como el DEX nativo de BNB Chain, PancakeSwap amplió su estrategia multi-cadena hacia Arbitrum para capturar parte del creciente ecosistema DeFi de Ethereum L2, donde el volumen de trading ha superado en muchos periodos al de la propia mainnet.",
+    },
+    description: `PancakeSwap on Arbitrum extends the protocol's reach to Ethereum's leading optimistic rollup, giving LPs access to Arbitrum's deep DeFi liquidity and active trader base under PancakeSwap's familiar concentrated liquidity interface. Arbitrum One consistently ranks among the top chains by DeFi TVL and DEX volume, driven by its low fees, fast soft-finality, and strong native ecosystem of protocols including GMX, Camelot, and Radiant.
+
+PancakeSwap's V3 deployment on Arbitrum sits alongside a competitive set of native DEXs, which means LP capital needs to be deployed strategically. The highest-volume pairs tend to involve ETH, USDC, WBTC, and ARB — the core Arbitrum ecosystem assets — where consistent arbitrage and retail flow generate fee income. Less established pairs may have thinner volume despite holding TVL, so monitoring the volume-to-TVL ratio is especially important on Arbitrum.
+
+Arbitrum's transaction costs are typically under $0.10 for standard LP operations, and its EVM equivalence means that any strategy or tool that works with Uniswap V3-based pools on Ethereum will work with PancakeSwap V3 on Arbitrum. This compatibility extends to analytics tools, LP management platforms, and yield optimisers.`,
+    faq: [
+      {
+        q: "How does PancakeSwap fit into Arbitrum's existing DEX ecosystem?",
+        a: "Arbitrum has a strong native DEX ecosystem with Camelot, Uniswap V3, and SushiSwap all competing for volume. PancakeSwap on Arbitrum adds another option particularly for users who prefer its interface or who are moving liquidity across chains from BNB Chain. For the most liquid pairs, PancakeSwap competes directly with other concentrated liquidity DEXs — the key differentiator is often depth and fee tier selection.",
+      },
+      {
+        q: "What is Arbitrum and how does it secure transactions?",
+        a: "Arbitrum One is an Optimistic Rollup that batches transactions and posts them to Ethereum for settlement. It assumes transactions are valid by default but allows a 7-day challenge window during which anyone can submit a fraud proof if they detect an invalid transaction. In practice, the vast majority of activity finalises without challenge. Withdrawals to Ethereum take up to 7 days via the canonical bridge, though third-party bridges offer near-instant exits.",
+      },
+      {
+        q: "Are CAKE emissions available for Arbitrum pools?",
+        a: "Select PancakeSwap pools on Arbitrum may receive CAKE token emissions through the cross-chain gauge system, though allocations are generally weighted toward BNB Chain where PancakeSwap has its highest volume. Check the PancakeSwap farms dashboard to see current emission rates. Even without CAKE rewards, active pools on Arbitrum generate competitive swap fees given the chain's high trading volume.",
+      },
+      {
+        q: "What gas costs should I expect on Arbitrum?",
+        a: "Arbitrum transaction fees for LP operations typically range from $0.01 to $0.10 depending on network congestion and transaction complexity. Adding or removing liquidity, collecting fees, and adjusting price ranges are all under $0.05 in most conditions. This is approximately 10 to 50 times cheaper than equivalent operations on Ethereum mainnet.",
+      },
+    ],
+  },
+
+  "arbitrum/sushiswap": {
+    protocol: {
+      creator: "Chef Nomi (pseudónimo anónimo), con posterior traspaso a la comunidad y dirección de core contributors como 0xMaki",
+      launched: "Agosto 2020 (en Ethereum); desplegado en Arbitrum en 2021, siendo uno de los primeros DEXs en llegar a la red",
+      became_known: "Tras protagonizar el 'vampire attack' sobre Uniswap en 2020, SushiSwap fue uno de los primeros DEXs en apostar por Arbitrum cuando esta red abrió al público en 2021, estableciendo una posición temprana en el que sería el L2 más grande de Ethereum por TVL.",
+    },
+    description: `SushiSwap on Arbitrum is one of the protocol's most active deployments outside of Ethereum mainnet, benefiting from Arbitrum's large and engaged DeFi user base and the chain's position as a primary destination for Ethereum users seeking lower fees without sacrificing security. SushiSwap V3 on Arbitrum provides concentrated liquidity with the added benefit of BentoBox integration, which allows LP capital to also serve as collateral in adjacent lending strategies.
+
+Arbitrum's ecosystem includes some of DeFi's most sophisticated users and protocols — GMX's perpetual trading, Radiant's cross-chain lending, and a thriving ecosystem of native protocols all contribute to consistent swap volume that benefits LP fee yields. SushiSwap's position as a well-established multi-chain protocol means it captures a meaningful share of this volume, particularly for pairs involving assets that are more established in the broader DeFi ecosystem than in Arbitrum-native protocols.
+
+The competitive LP landscape on Arbitrum rewards capital efficiency. With multiple high-quality concentrated liquidity DEXs competing for volume, the pools that consistently attract the best fee yields are those where SushiSwap has a genuine liquidity advantage — either through historical depth, protocol integrations, or pairing with assets where SushiSwap has strong cross-chain liquidity.`,
+    faq: [
+      {
+        q: "What advantages does SushiSwap offer on Arbitrum compared to Camelot or Uniswap?",
+        a: "SushiSwap's main advantages on Arbitrum are its BentoBox capital efficiency layer (allowing LP capital to be used in lending), xSUSHI fee sharing for token holders, and cross-chain consistency for LPs managing positions across multiple networks. Camelot is Arbitrum's native DEX with deep ecosystem integration, and Uniswap has the deepest liquidity for standard pairs — SushiSwap sits between the two, strong in cross-chain pairs and DeFi power-user workflows.",
+      },
+      {
+        q: "How does BentoBox improve capital efficiency on Arbitrum?",
+        a: "BentoBox is SushiSwap's internal vault that holds tokens deposited across multiple protocol products. When you provide liquidity on SushiSwap on Arbitrum, your tokens sit in BentoBox rather than in a standalone pool contract. This allows the same capital to simultaneously earn swap fees and potentially be used as collateral in Kashi lending positions, though in practice most LPs use the swap fee income as their primary return.",
+      },
+      {
+        q: "How long do Arbitrum withdrawals take?",
+        a: "Withdrawing from Arbitrum to Ethereum via the canonical bridge takes 7 days due to the optimistic rollup challenge period. If you need faster access to your funds on Ethereum, third-party bridges like Across, Hop, or Stargate provide near-instant liquidity at a small fee. Within Arbitrum itself, transactions finalise in under a second.",
+      },
+      {
+        q: "What are the best SushiSwap pools on Arbitrum for fee yield?",
+        a: "The top 10 table above reflects today's best pools by volume, which is the most reliable proxy for fee yield. Historically, pairs involving ETH, USDC, WBTC, and ARB have shown the most consistent volume on Arbitrum. Volume-to-TVL ratio is the key metric — a pool with high TVL but low volume generates poor returns per dollar deposited regardless of its fee tier.",
+      },
+    ],
+  },
+
+  "arbitrum/uniswap": {
+    protocol: {
+      creator: "Hayden Adams",
+      launched: "Noviembre 2018 (V1 en Ethereum); desplegado en Arbitrum con V3 en 2021, siendo uno de los primeros protocolos importantes en llegar a la red",
+      became_known: "Uniswap fue el creador del modelo AMM y el DEX dominante durante el verano DeFi de 2020. Su despliegue temprano en Arbitrum — cuando el L2 abrió al público en agosto de 2021 — lo convirtió en el DEX de referencia de la red y consolidó Arbitrum como el L2 de Ethereum con mayor TVL.",
+    },
+    description: `Uniswap V3 on Arbitrum is one of the most actively traded DEX deployments on any network — a natural result of combining the most used DEX protocol with one of Ethereum's most popular Layer 2s. Arbitrum's low fees, fast soft-finality, and EVM equivalence have made it a primary destination for Ethereum DeFi users, and Uniswap's deep brand recognition means it captures a disproportionate share of that activity.
+
+The depth of liquidity in Uniswap's top Arbitrum pools makes them a reference point for pricing across the entire Arbitrum ecosystem. Many protocols, aggregators, and price oracles on Arbitrum use Uniswap V3 pool prices as their primary data source, which in turn drives volume through those pools as arbitrageurs and integrators constantly interact with them. This creates a reinforcing dynamic: deep liquidity attracts volume, which generates fees, which attracts more LPs, which deepens liquidity.
+
+For liquidity providers, Arbitrum's economics are compelling — gas costs of a few cents make active position management routine rather than expensive, and the volume depth in core pairs generates consistent fee income. Uniswap's V3 interface and analytics tools are fully supported on Arbitrum, making it straightforward to deploy, monitor, and manage concentrated liquidity positions.`,
+    faq: [
+      {
+        q: "Why is Uniswap particularly strong on Arbitrum compared to other L2s?",
+        a: "Arbitrum was one of Uniswap's earliest multi-chain deployments, giving it a head start in building liquidity depth. Arbitrum's DeFi ecosystem is also heavily Ethereum-native — many of its users are experienced Ethereum DeFi participants who already use Uniswap as their default DEX. This combination of early deployment and aligned user base has made Uniswap on Arbitrum consistently one of the highest-volume DEX deployments across all chains.",
+      },
+      {
+        q: "What are the top trading pairs on Uniswap Arbitrum?",
+        a: "The most consistently active pairs on Uniswap V3 Arbitrum involve ETH, USDC, WBTC, ARB, and USDT. Stablecoin pools like USDC/USDT capture high volume at low fee tiers, while ETH/USDC and ETH/USDT pools generate strong fee income given the constant demand for ETH exposure among Arbitrum traders. The top 10 table above shows today's rankings updated with the latest data.",
+      },
+      {
+        q: "How does Uniswap V3's fee structure work on Arbitrum?",
+        a: "Uniswap V3 on Arbitrum uses the same four fee tiers as on all other deployments: 0.01%, 0.05%, 0.30%, and 1.00%. All swap fees go directly to LPs — Uniswap currently does not take a protocol fee on Arbitrum (the protocol fee switch is controlled by governance and has not been activated on this deployment). This means 100% of collected fees are distributed to liquidity providers.",
+      },
+      {
+        q: "Can I use Uniswap V3 LP positions as collateral on Arbitrum?",
+        a: "Some lending protocols on Arbitrum accept Uniswap V3 NFT positions as collateral, allowing you to borrow against your LP position without closing it. This is more commonly supported on Ethereum mainnet, but protocols like Sentiment and others on Arbitrum have explored this functionality. Check individual lending protocol documentation for current support.",
+      },
+    ],
+  },
+
+  // ─── ETHEREUM ───────────────────────────────────────────────────────────────
+
+  "ethereum/pancakeswap": {
+    protocol: {
+      creator: "Equipo anónimo vinculado al ecosistema de Binance",
+      launched: "Septiembre 2020 (en BNB Chain); desplegado en Ethereum mainnet con V3 en 2023",
+      became_known: "Construido como el DEX nativo de BNB Chain, PancakeSwap dominó ese ecosistema antes de expandirse a Ethereum, donde compite directamente con Uniswap y SushiSwap en el mercado de liquidez concentrada más profundo y establecido del mundo.",
+    },
+    description: `PancakeSwap's deployment on Ethereum mainnet marks its expansion beyond BNB Chain into the deepest and most established DeFi liquidity environment in the world. While PancakeSwap built its reputation on BNB Chain's low-fee, high-throughput architecture, its V3 concentrated liquidity model is fully capable of competing on Ethereum — particularly for pairs involving tokens that have strong community overlap between the BNB Chain and Ethereum ecosystems.
+
+Ethereum mainnet is home to the largest concentration of institutional and sophisticated DeFi capital. This means that the pools which do accumulate liquidity on PancakeSwap Ethereum are likely to be used by well-informed LPs making deliberate choices — often for pairs where PancakeSwap has a specific advantage in terms of integrations or community liquidity incentives. Gas costs on Ethereum are significantly higher than on L2s or BNB Chain, so positions need to be large enough to make active management economically sensible.
+
+The pools shown here are the top PancakeSwap V3 pairs on Ethereum by 24-hour volume. For LPs already providing liquidity on PancakeSwap across other chains, extending to Ethereum allows participation in the protocol's governance and fee-sharing mechanisms from the most liquid base layer in DeFi.`,
+    faq: [
+      {
+        q: "Why does PancakeSwap exist on Ethereum if it was built for BNB Chain?",
+        a: "PancakeSwap expanded to Ethereum as part of its multi-chain strategy to capture volume from Ethereum's much larger user base and liquidity pool. Many tokens have their primary liquidity on Ethereum even if their communities also exist on BNB Chain, so having a presence on Ethereum mainnet allows PancakeSwap to offer more comprehensive token coverage and compete for integrations with Ethereum-native DeFi protocols.",
+      },
+      {
+        q: "How does PancakeSwap V3 on Ethereum compare to Uniswap V3?",
+        a: "PancakeSwap V3 and Uniswap V3 use architecturally similar concentrated liquidity mechanisms. The main differences are in liquidity depth (Uniswap is deeper in most Ethereum pairs), fee distribution (PancakeSwap directs some fees to CAKE stakers and the treasury), and ecosystem integrations. For LPs, the practical experience is very similar — price ranges, fee tiers, and position management work the same way.",
+      },
+      {
+        q: "What gas costs should I expect on Ethereum?",
+        a: "Ethereum mainnet gas costs are significantly higher than on L2s. Adding or removing liquidity, collecting fees, or adjusting a price range can cost anywhere from $5 to $50+ depending on network congestion. This means that actively managing concentrated liquidity positions on Ethereum requires either large position sizes to justify the gas overhead, or infrequent rebalancing strategies that minimise transaction frequency.",
+      },
+      {
+        q: "Are CAKE rewards available on Ethereum mainnet pools?",
+        a: "Select PancakeSwap pools on Ethereum may receive CAKE emissions through the cross-chain gauge system, though the majority of CAKE rewards are directed toward BNB Chain pools where PancakeSwap has its deepest liquidity and highest trading activity. Check the PancakeSwap farms dashboard for current emission rates on specific Ethereum pools.",
+      },
+    ],
+  },
+
+  "ethereum/sushiswap": {
+    protocol: {
+      creator: "Chef Nomi (pseudónimo anónimo); nacido como fork de Uniswap V2",
+      launched: "Agosto 2020",
+      became_known: "SushiSwap nació en Ethereum y se hizo conocido de inmediato con el 'vampire attack' sobre Uniswap en agosto de 2020 — migrando más de 1.000 millones de dólares en liquidez en días. Tras la controversia por la venta de tokens del fundador, la comunidad tomó el control y lo convirtió en uno de los DEXs más influyentes de Ethereum, añadiendo BentoBox, Kashi lending y eventualmente V3.",
+    },
+    description: `SushiSwap on Ethereum is where the protocol was born — launched in 2020 as one of the first Uniswap forks, it quickly evolved into an independent protocol with its own governance, fee model, and product suite. Today, SushiSwap V3 on Ethereum offers concentrated liquidity with the same mechanics as Uniswap V3 but with a distinct fee-sharing model that directs a portion of swap revenue to xSUSHI stakers, giving SUSHI token holders direct financial exposure to Ethereum's most liquid DEX market.
+
+Ethereum mainnet remains the reference layer for DeFi pricing and liquidity. The pools on SushiSwap Ethereum compete directly with Uniswap V3, Curve, and other established venues for the same institutional and retail flow. In this competitive environment, SushiSwap has carved out its niche in cross-chain capital, protocol integrations through BentoBox, and specific token pairs where its community has historically focused liquidity.
+
+Gas costs on Ethereum make passive, set-and-forget liquidity provision more viable than active management for most LPs. Wide price ranges that stay in range for extended periods are a common strategy — trading some capital efficiency for reduced rebalancing frequency and lower cumulative gas expenditure.`,
+    faq: [
+      {
+        q: "What is the history of SushiSwap on Ethereum?",
+        a: "SushiSwap launched in August 2020 as a fork of Uniswap V2, initially causing controversy by migrating a large portion of Uniswap's liquidity through a 'vampire attack'. Despite the turbulent launch, SushiSwap established itself as a legitimate protocol with its own roadmap, introducing BentoBox, Kashi lending, and eventually V3 concentrated liquidity. It remains one of Ethereum's most historically significant DEX protocols.",
+      },
+      {
+        q: "How does xSUSHI fee sharing work on Ethereum?",
+        a: "When you stake SUSHI in the SushiBar, you receive xSUSHI tokens that represent your share of the staking pool. A portion of swap fees from SushiSwap pools across all chains — including Ethereum — is converted to SUSHI and deposited into the SushiBar, increasing the SUSHI value of each xSUSHI over time. This is one of the few DEX models that directly rewards governance token holders with protocol revenue.",
+      },
+      {
+        q: "What fee tiers does SushiSwap V3 offer on Ethereum?",
+        a: "SushiSwap V3 on Ethereum offers three fee tiers: 0.05% for correlated pairs, 0.30% for standard pairs, and 1.00% for exotic or low-liquidity pairs. This is slightly different from Uniswap V3, which also includes a 0.01% tier for highly correlated stablecoin pairs. For most use cases, the available tiers are sufficient to match the volatility profile of a given pair.",
+      },
+      {
+        q: "Is SushiSwap V3 on Ethereum audited and secure?",
+        a: "SushiSwap's contracts have undergone multiple audits from reputable security firms including PeckShield, Quantstamp, and others. The V3 contracts are also derived from the well-audited Uniswap V3 codebase with modifications. As with any DeFi protocol, no audit provides a guarantee against all vulnerabilities, but SushiSwap's Ethereum deployment has operated securely through multiple years and market cycles.",
+      },
+    ],
+  },
+
+  "ethereum/uniswap": {
+    protocol: {
+      creator: "Hayden Adams",
+      launched: "Noviembre 2018",
+      became_known: "Uniswap inventó el modelo AMM moderno con su fórmula x*y=k, democratizando la provisión de liquidez en Ethereum. Se hizo globalmente conocido durante el verano DeFi de 2020 con V2, y volvió a redefinir el sector en mayo de 2021 con V3 y el concepto de liquidez concentrada — una innovación que hoy es el estándar de facto en la industria DEX.",
+    },
+    description: `Uniswap on Ethereum is the reference standard for decentralised exchange liquidity — the original deployment of the protocol that invented the AMM model and, with V3, the concentrated liquidity model that now dominates DeFi. With billions of dollars in TVL and tens of billions in monthly trading volume, Uniswap V3 on Ethereum mainnet is not just a DEX but the pricing infrastructure that the rest of DeFi is built on.
+
+The pools on Uniswap Ethereum are used as price oracles by lending protocols, derivatives platforms, and yield aggregators across the ecosystem. This means that beyond the direct fee income from swaps, Uniswap LPs provide a public good to the entire DeFi stack — and the volume generated by oracle interactions and integrations adds to the fee revenue distributed to providers.
+
+For liquidity providers, Ethereum's gas costs demand a different approach than on L2s. Concentrated liquidity in tight ranges works best for large positions where the fee income justifies periodic rebalancing costs. Many professional LPs on Ethereum use automated range management services or choose wider ranges specifically to reduce transaction frequency while staying competitive with capital efficiency.`,
+    faq: [
+      {
+        q: "Why is Uniswap on Ethereum still relevant when L2s are cheaper?",
+        a: "Ethereum mainnet hosts the deepest and most trusted DeFi liquidity. Many protocols, especially institutional ones, require mainnet settlement for security and composability reasons. Uniswap V3 on Ethereum is also used as the primary price oracle for a large portion of DeFi — lending protocols, derivatives, and on-chain options all reference Ethereum Uniswap prices. This oracle usage drives constant volume that benefits LPs regardless of L2 alternatives.",
+      },
+      {
+        q: "What is the Uniswap protocol fee and does it affect LPs?",
+        a: "Uniswap has a protocol fee mechanism that can be activated by governance on a per-pool basis, redirecting a portion of swap fees to the Uniswap treasury rather than LPs. As of the last governance decisions, the fee switch has been activated on some pools. When active, LPs in those pools receive a slightly lower share of swap fees — typically 5/6 of the standard rate. Always check the current fee split for specific pools.",
+      },
+      {
+        q: "What are the highest-volume Uniswap V3 pools on Ethereum?",
+        a: "The consistently highest-volume pools on Uniswap V3 Ethereum are USDC/WETH (0.05%), USDC/USDT (0.01%), and WBTC/WETH (0.05%). These pairs benefit from constant arbitrage, institutional trading flow, and oracle-driven interactions. The top 10 table above shows today's rankings with the latest volume data.",
+      },
+      {
+        q: "How should I think about gas costs when providing liquidity on Ethereum?",
+        a: "Gas costs on Ethereum typically range from $10 to $100+ for LP operations depending on network congestion. For concentrated liquidity positions that need frequent rebalancing, this can significantly erode returns. Common strategies to manage gas include: choosing wider price ranges that stay in range longer, using automated rebalancing vaults (like Arrakis or Gamma) that amortise gas across many positions, or reserving Ethereum mainnet for large positions where fee income dwarfs transaction costs.",
+      },
+    ],
+  },
+
+  // ─── HYPEREVM ───────────────────────────────────────────────────────────────
+
+  "hyperevm/hybra": {
+    description: `Hybra is a native DEX on HyperEVM, the EVM-compatible execution environment of Hyperliquid — the on-chain perpetual futures protocol that gained significant attention in 2024 for its fully on-chain orderbook architecture and rapid growth. HyperEVM extends Hyperliquid's infrastructure to support arbitrary smart contracts, and Hybra is one of the first DEXs to launch natively on this new execution environment.
+
+HyperEVM is architecturally unique: it runs alongside Hyperliquid's HyperBFT consensus mechanism rather than as a traditional rollup or sidechain. This means it benefits from the same high-performance consensus that powers Hyperliquid's perpetuals, with sub-second finality and extremely low fees. For liquidity providers, this is a genuinely new DeFi environment — one with strong organic volume potential from Hyperliquid's existing user base seeking spot liquidity alongside their perpetuals activity.
+
+As a newer ecosystem, HyperEVM pools on Hybra are earlier-stage than pools on established chains. This means higher potential yields for early LPs who can tolerate the additional risk of a newer protocol and ecosystem, but also thinner liquidity and less historical data to evaluate risk-return profiles.`,
+    faq: [
+      {
+        q: "What is HyperEVM and how does it relate to Hyperliquid?",
+        a: "HyperEVM is the EVM-compatible smart contract layer of the Hyperliquid ecosystem. Hyperliquid itself is known for its fully on-chain perpetual futures exchange with an order book architecture. HyperEVM allows DeFi protocols like Hybra to deploy on the same infrastructure, enabling spot DEX liquidity to coexist with Hyperliquid's perpetuals — creating a more complete trading ecosystem on a single high-performance chain.",
+      },
+      {
+        q: "What are the risks of providing liquidity on a new ecosystem like HyperEVM?",
+        a: "The primary risks are protocol immaturity (Hybra's contracts have a shorter audit and battle-testing history than established DEXs), ecosystem risk (HyperEVM is newer and its long-term adoption is not yet proven), and liquidity risk (thinner markets mean higher price impact and potentially higher impermanent loss in volatile conditions). These risks should be weighed against the potentially higher fee yields that come from being an early LP in a growing ecosystem.",
+      },
+      {
+        q: "How does Hybra's DEX model work on HyperEVM?",
+        a: "Hybra operates as an AMM-based DEX on HyperEVM, enabling token swaps and liquidity provision in the same model as other EVM DEXs. Its integration with Hyperliquid's infrastructure means it benefits from the same consensus finality and fee economics. As HyperEVM's ecosystem grows, Hybra is positioned to become the primary spot liquidity venue for tokens that also have perpetual markets on Hyperliquid.",
+      },
+      {
+        q: "What tokens are tradeable on Hybra?",
+        a: "Hybra supports tokens native to the HyperEVM ecosystem as well as assets bridged from other chains. The most active pairs currently reflect HyperEVM's native token ecosystem. As more projects deploy on HyperEVM and bridge assets to the network, the range of tradeable pairs on Hybra is expected to expand significantly.",
+      },
+    ],
+  },
+
+  "hyperevm/hyperswap": {
+    description: `HyperSwap is a DEX built natively for HyperEVM, designed to take advantage of Hyperliquid's high-performance consensus infrastructure and its large existing user base of active perpetuals traders. The key value proposition is proximity to Hyperliquid's flow: traders who use Hyperliquid's perpetuals also need spot liquidity for managing positions, hedging, and converting between assets — and HyperSwap is positioned to capture that adjacent demand.
+
+HyperEVM's architecture offers sub-second transaction finality with fees that are minimal by design — Hyperliquid's team built the infrastructure with high-frequency trading in mind, which naturally benefits DEX operations as well. This performance profile makes HyperSwap suitable for both retail LPs and more sophisticated market-making strategies that require fast execution and predictable costs.
+
+As an early-stage ecosystem DEX, HyperSwap presents the classic risk-reward tradeoff of being a first mover: higher uncertainty and less historical data, but potential for above-average yields as the ecosystem bootstraps liquidity and user activity grows from Hyperliquid's established trading community.`,
+    faq: [
+      {
+        q: "Why is there a DEX specifically for HyperEVM?",
+        a: "HyperEVM is a new EVM environment with its own native tokens, bridged assets, and user base. A native DEX like HyperSwap is necessary to provide spot trading infrastructure for these assets without relying on bridges to established chains. It also allows Hyperliquid's perpetuals users to access spot liquidity in the same ecosystem, reducing friction for common workflows like converting PnL to stablecoins or hedging spot exposure.",
+      },
+      {
+        q: "How does HyperEVM's performance compare to Ethereum L2s?",
+        a: "HyperEVM runs on HyperBFT consensus, which is a custom consensus mechanism designed for the performance requirements of Hyperliquid's orderbook. It achieves sub-second finality with very low fees — comparable to or faster than leading L2s like Arbitrum. Unlike rollups, HyperEVM does not inherit Ethereum's security directly, as it operates under Hyperliquid's own validator set.",
+      },
+      {
+        q: "What should I know before providing liquidity on HyperSwap?",
+        a: "HyperSwap is a newer protocol in a newer ecosystem. Before providing liquidity, consider: whether the protocol's contracts have been audited, the current liquidity depth and whether volume is sufficient to generate meaningful fees, and your comfort level with the HyperEVM ecosystem's maturity. Early-stage ecosystems can offer higher yields but also carry higher protocol and ecosystem risk than established venues.",
+      },
+      {
+        q: "Can I bridge assets to HyperEVM to use HyperSwap?",
+        a: "Yes. HyperEVM has bridging infrastructure that allows assets from Ethereum and other major chains to be transferred to the network. The bridging process and supported assets are detailed in Hyperliquid's documentation. Once bridged, you need HYPE or the network's native token to pay gas fees for HyperSwap interactions.",
+      },
+    ],
+  },
+
+  "hyperevm/projectx": {
+    description: `ProjectX is among the first wave of DEXs launching on HyperEVM, operating in a nascent but high-potential ecosystem backed by Hyperliquid's established trading infrastructure and community. Like other HyperEVM-native DEXs, ProjectX benefits from the same high-throughput, low-latency execution environment that powers Hyperliquid's perpetuals — giving it a performance profile that rivals or exceeds established L2 DEXs.
+
+The opportunity for early LPs on ProjectX and other HyperEVM DEXs mirrors patterns seen in other emerging DeFi ecosystems: when a new chain with organic user activity launches its first DEXs, the initial liquidity providers often capture outsized fee yields before capital inflows normalise returns. Hyperliquid's existing base of active traders provides more authentic initial demand than many speculative chain launches that rely entirely on incentive-driven activity.
+
+ProjectX's position in the HyperEVM ecosystem is still developing, which means the pools shown here represent current best estimates of activity in a rapidly evolving market. Daily updates reflect the latest on-chain data as the ecosystem matures.`,
+    faq: [
+      {
+        q: "What is ProjectX on HyperEVM?",
+        a: "ProjectX is a decentralised exchange deployed on HyperEVM, Hyperliquid's EVM-compatible execution environment. It provides AMM-based spot liquidity for tokens in the HyperEVM ecosystem, operating alongside other native DEXs like HyperSwap and Hybra. As one of the earliest DEXs on HyperEVM, ProjectX is participating in the bootstrapping of spot liquidity infrastructure for a network with an established perpetuals trading user base.",
+      },
+      {
+        q: "How do I evaluate whether to provide liquidity on ProjectX?",
+        a: "For an early-stage ecosystem DEX like ProjectX, the key questions are: Is there genuine trading volume (not just TVL from incentives)? Have the contracts been audited by reputable security firms? What is the volume-to-TVL ratio in the pools you are considering? Early LPs should look for pools where organic volume is present rather than just chasing the highest headline TVL, which can be misleading in incentivised ecosystems.",
+      },
+      {
+        q: "Is HyperEVM secure enough for significant LP capital?",
+        a: "HyperEVM is a newer network, and its security track record is shorter than established chains like Ethereum or Arbitrum. Hyperliquid's team has a strong engineering reputation from building a high-performance perpetuals exchange, but HyperEVM's EVM layer and its bridge infrastructure are newer surfaces that have not been tested across as many conditions or attack vectors as Ethereum mainnet or major rollups.",
+      },
+      {
+        q: "What is the relationship between ProjectX and Hyperliquid's trading ecosystem?",
+        a: "ProjectX and other HyperEVM DEXs complement Hyperliquid's perpetuals by providing spot liquidity for the same or related assets. Traders who use Hyperliquid to trade perpetuals on a token may also need spot liquidity for that token — to take delivery, hedge, or convert positions. This adjacent demand from an existing active trading community is what makes HyperEVM an interesting environment for spot DEX liquidity compared to chains that lack established native trading activity.",
+      },
+    ],
+  },
+
+  // ─── OPTIMISM ───────────────────────────────────────────────────────────────
+
+  "optimism/uniswap": {
+    protocol: {
+      creator: "Hayden Adams",
+      launched: "Noviembre 2018 (V1 en Ethereum); desplegado en Optimism con V3 en 2021, siendo uno de los primeros protocolos DeFi importantes en llegar a la red",
+      became_known: "El despliegue temprano de Uniswap V3 en Optimism fue clave para validar el ecosistema L2 en sus primeros meses, cuando la red necesitaba atraer protocolos establecidos para ganar credibilidad. Su presencia ayudó a posicionar Optimism como el segundo L2 de Ethereum más relevante junto a Arbitrum.",
+    },
+    description: `Uniswap V3 on Optimism was one of the first major DEX deployments on a production Ethereum Layer 2, establishing Optimism as a credible DeFi destination before the L2 ecosystem had matured. Today, Uniswap on Optimism benefits from the chain's strong DeFi fundamentals — a committed developer community, the RetroPGF funding model that has attracted high-quality protocol development, and consistent user growth driven by low fees and fast finality.
+
+Optimism's OP Stack has become the foundation for multiple L2s including Base and Worldchain, which has increased the protocol-level attention and development resources flowing into the Optimism ecosystem. For Uniswap LPs, this means ongoing improvements to the surrounding infrastructure — better tooling, more integrations, and growing volume as the ecosystem scales.
+
+Optimism transaction fees are typically under $0.10 for LP operations, making active position management practical. The chain's seven-day withdrawal window to Ethereum (via the canonical bridge) is the main friction point, though third-party bridges mitigate this for users who need faster access to Ethereum-settled assets.`,
+    faq: [
+      {
+        q: "How has Uniswap V3 performed on Optimism historically?",
+        a: "Uniswap on Optimism has been one of the chain's most consistently active DEXs since deployment. While Velodrome has grown to dominate Optimism's native liquidity, Uniswap maintains strong volume for the core ETH/USDC, ETH/USDT, and WBTC/ETH pairs — particularly from aggregator flow and users familiar with Uniswap's interface. Uniswap's Optimism deployment is often used as a benchmark for DEX performance on the chain.",
+      },
+      {
+        q: "What is Optimism's RetroPGF and how does it affect DeFi?",
+        a: "Retroactive Public Goods Funding (RetroPGF) is Optimism's mechanism for rewarding projects that have created value for the ecosystem, funded by a portion of sequencer revenue. It has attracted developers and protocols to build on Optimism knowing that genuine contributions are rewarded. For DeFi users, this translates to a higher quality of supporting infrastructure — better wallets, analytics tools, and protocol integrations than on chains without similar incentive structures.",
+      },
+      {
+        q: "What are the main Uniswap pairs on Optimism?",
+        a: "The highest-volume Uniswap V3 pools on Optimism consistently involve ETH, USDC (bridged and native), USDT, WBTC, and OP. The top 10 table above shows today's rankings. Stablecoin pairs tend to have the most consistent volume due to constant demand for stable swaps from DeFi protocols and users seeking to move between USD-denominated assets with minimal slippage.",
+      },
+      {
+        q: "How do I bridge assets to Optimism for Uniswap liquidity provision?",
+        a: "The official Optimism Bridge allows ERC-20 token transfers from Ethereum with a confirmation time of a few minutes. Withdrawals back to Ethereum take 7 days via the canonical bridge. Third-party bridges like Across, Hop, and Stargate offer near-instant bidirectional transfers at a small fee. Once on Optimism, you need ETH (on Optimism) to pay gas fees for Uniswap interactions.",
+      },
+    ],
+  },
+
+  "optimism/velodrome": {
+    protocol: {
+      creator: "Equipo fundador que incluye a @gabagool, @tayvano_ y otros colaboradores del ecosistema DeFi; inspirado en Solidly de Andre Cronje",
+      launched: "Junio 2022",
+      became_known: "Velodrome se convirtió en el DEX dominante de Optimism en pocos meses desde su lanzamiento, superando a Uniswap en TVL y volumen en la red. Su modelo ve(3,3) — una evolución del diseño Solidly de Andre Cronje — resultó especialmente efectivo para atraer a protocolos nativos de Optimism que necesitaban liquidez profunda para sus tokens, creando el flywheel que luego Aerodrome replicó en Base.",
+    },
+    description: `Velodrome is the dominant liquidity protocol on Optimism, consistently accounting for the majority of the chain's DEX volume and TVL. As the originator of the ve(3,3) model that later inspired Aerodrome on Base, Velodrome has refined its liquidity incentive architecture over multiple versions — with Velodrome V2 introducing concentrated liquidity (CL) pools alongside its original stable and volatile AMM pools, giving LPs and protocols greater flexibility in how they deploy and attract capital.
+
+The ve(3,3) flywheel on Velodrome works as follows: VELO token emissions are distributed to pools based on weekly votes from veVELO holders. Protocols that want deep liquidity can bribe veVELO voters with additional tokens, creating a competitive market for emissions. veVELO voters earn 100% of fees from the pools they vote for, plus any bribes — aligning their incentives with the health of the liquidity they direct. This model has proven remarkably effective at concentrating liquidity where it is most strategically needed.
+
+Optimism's ecosystem benefits from strong developer support, the RetroPGF funding model, and its role as the reference implementation of the OP Stack. These factors have maintained consistent user and protocol growth on the chain, which translates to durable volume and fee income for Velodrome LPs.`,
+    faq: [
+      {
+        q: "How does Velodrome's ve(3,3) model work in practice?",
+        a: "Each week begins a new epoch. VELO holders can lock their tokens for up to 4 years to receive veVELO NFTs, which grant voting power. During the epoch, veVELO holders vote to allocate the next week's VELO emissions to specific pools. Protocols wanting liquidity for their tokens can bribe veVELO voters with additional rewards to attract votes. At epoch end, voters receive 100% of fees from voted pools plus all bribes they received. LPs in voted pools receive VELO emissions on top of swap fees.",
+      },
+      {
+        q: "What is the difference between Velodrome V1 and V2 pools?",
+        a: "Velodrome V1 offered two pool types: stable pools (using StableSwap for correlated assets) and volatile pools (constant-product AMM for uncorrelated pairs). V2 added concentrated liquidity (CL) pools, which use Uniswap V3-style price ranges for maximum capital efficiency. V2 CL pools are generally preferred for volatile pairs where LPs want to maximise fee capture per dollar deposited, while stable pools remain optimal for highly correlated pairs like USDC/USDT.",
+      },
+      {
+        q: "Do I need to hold veVELO to earn from Velodrome pools?",
+        a: "No. You can provide liquidity to any Velodrome pool and earn swap fees without holding veVELO. However, pools that receive veVELO votes also emit VELO tokens to their LPs, which can significantly boost effective APR. To receive VELO emissions, you need to stake your LP position in the gauge for the relevant pool — this is a separate transaction from adding liquidity and is required to become eligible for token rewards.",
+      },
+      {
+        q: "How does Velodrome compare to Aerodrome on Base?",
+        a: "Aerodrome is a fork of Velodrome V2, launched on Base with similar mechanics. Velodrome is the original and operates on Optimism, while Aerodrome has grown to surpass it in total TVL due to Base's faster user growth. Both protocols share the same ve(3,3) architecture and are maintained by overlapping teams. For LPs, the choice between them is primarily about which chain's ecosystem and token incentives are more attractive at a given time.",
+      },
+      {
+        q: "What are the risks of providing liquidity on Velodrome?",
+        a: "The main risks are impermanent loss (for volatile pairs), smart contract risk (Velodrome contracts are audited but not immune to exploits), and VELO token price risk if a significant portion of your expected return is denominated in VELO emissions. The ve(3,3) model also creates governance risk — if veVELO votes shift away from your pool, emissions can drop significantly week over week, changing the economics of your position.",
+      },
+    ],
+  },
+
+  // ─── UNICHAIN ───────────────────────────────────────────────────────────────
+
+  "unichain/uniswap": {
+    protocol: {
+      creator: "Hayden Adams / Uniswap Labs",
+      launched: "Noviembre 2018 (V1 en Ethereum); UniChain como L2 dedicado lanzado en 2024",
+      became_known: "Uniswap inventó el AMM moderno y dominó el DEX landscape de Ethereum durante el verano DeFi de 2020. UniChain representa la evolución lógica del protocolo: tras años de desplegar en redes de terceros, Uniswap construyó su propia L2 para controlar la experiencia completa — desde el secuenciador hasta la distribución de MEV — optimizando el entorno específicamente para trading de activos digitales.",
+    },
+    description: `UniChain is Uniswap's own dedicated Layer 2, built on the OP Stack and designed to optimise the DEX experience from the ground up. Unlike deploying on a general-purpose rollup, UniChain gives Uniswap control over the sequencer, block time, and fee structure — allowing the protocol to implement features specifically tailored to DEX activity, including reduced MEV exposure through Flashblocks and faster block times that improve the trading experience.
+
+On UniChain, Uniswap is not competing with other protocols for blockspace — it is the primary application the chain was built to serve. This means that as UniChain scales, Uniswap LP activity on the chain benefits directly from infrastructure improvements made for the protocol's benefit. Liquidity providers on UniChain are early participants in Uniswap's most ambitious infrastructure investment.
+
+For LPs, UniChain's economics are designed to be competitive: low fees make position management practical, and the chain's focus on Uniswap means that aggregators, interfaces, and tooling are built with Uniswap LP workflows as the primary use case. The pools shown here represent the current most active pairs on UniChain, updated daily.`,
+    faq: [
+      {
+        q: "What is UniChain and why did Uniswap build its own L2?",
+        a: "UniChain is Uniswap's dedicated Layer 2, built on the OP Stack. Uniswap built its own chain to gain control over sequencer revenue (which can fund protocol development), to implement MEV-reduction features like Flashblocks that protect traders, and to optimise block times and fee structures specifically for DEX activity. It also allows Uniswap governance to capture value from the chain's operation rather than sharing it with a third-party L2 operator.",
+      },
+      {
+        q: "How does UniChain reduce MEV for traders and LPs?",
+        a: "UniChain implements Flashblocks — a system where blocks are divided into sub-blocks that are pre-confirmed rapidly, reducing the window for MEV extraction between a transaction being submitted and being included. This benefits traders by reducing sandwich attacks and LPs by ensuring that arbitrage between UniChain and external markets is more orderly, potentially reducing the adverse selection that LPs face from sophisticated MEV bots.",
+      },
+      {
+        q: "Is providing liquidity on UniChain different from Uniswap on other chains?",
+        a: "The core mechanics of concentrated liquidity are identical — you still choose a price range, deposit both tokens, and earn a share of swap fees when the price trades within your range. The differences are in the surrounding infrastructure: UniChain's faster blocks mean price updates happen more quickly, MEV protections reduce some forms of LP value extraction, and the chain's focus on Uniswap means better tooling and integrations are available specifically for LP management.",
+      },
+      {
+        q: "What is the current state of liquidity on UniChain?",
+        a: "UniChain is a relatively new deployment and is still building liquidity depth. The most active pools currently involve ETH, USDC, and major Uniswap ecosystem tokens. As UniChain's ecosystem develops and more protocols deploy on the chain, liquidity depth is expected to grow. The top 10 table above reflects current volume rankings updated daily to show where genuine trading activity is concentrated.",
+      },
+      {
+        q: "How do I access UniChain to provide liquidity?",
+        a: "UniChain can be accessed through app.uniswap.org by selecting UniChain as your network. Bridging assets from Ethereum uses the standard OP Stack bridge infrastructure. You need ETH on UniChain to pay gas fees. As an OP Stack chain, UniChain is compatible with standard Ethereum wallets like MetaMask and Rabby, requiring only a network addition to access.",
+      },
+    ],
+  },
+
+  // ─── AVALANCHE ──────────────────────────────────────────────────────────────
+
+  "avalanche/sushiswap": {
+    protocol: {
+      creator: "Chef Nomi (pseudónimo anónimo), con posterior traspaso a la comunidad y dirección de core contributors como 0xMaki",
+      launched: "Agosto 2020 (en Ethereum); desplegado en Avalanche C-Chain en 2021",
+      became_known: "Tras el 'vampire attack' sobre Uniswap que lo lanzó a la fama en 2020, SushiSwap adoptó una estrategia agresiva de expansión multi-cadena. Avalanche fue uno de sus primeros despliegues fuera de Ethereum, aprovechando el Avalanche Rush — el programa de incentivos de 180 millones de dólares que en 2021 atrajo a los principales protocolos DeFi a la red.",
+    },
+    description: `SushiSwap on Avalanche's C-Chain brings concentrated liquidity infrastructure to one of the highest-throughput Layer 1 blockchains in DeFi. Avalanche achieves near-instant transaction finality through its proprietary Avalanche Consensus mechanism — a DAG-based protocol that reaches finality in under two seconds without sacrificing decentralisation. This speed, combined with fees denominated in AVAX that are typically under a dollar, makes Avalanche well-suited for active LP management strategies.
+
+Avalanche has cultivated a distinct DeFi identity with strong institutional participation — particularly through Avalanche Evergreen subnets that serve regulated financial applications — alongside a retail user base attracted by the chain's speed and the Avalanche Foundation's active ecosystem incentive programs. SushiSwap on Avalanche captures both segments, serving as a familiar multi-chain interface for DeFi users who manage positions across multiple networks.
+
+The C-Chain (Contract Chain) is where all EVM-compatible activity happens on Avalanche, and it is where SushiSwap is deployed. The C-Chain uses AVAX for gas, so maintaining a small AVAX balance is necessary for LP operations. SushiSwap V3's concentrated liquidity mechanics on Avalanche work identically to other EVM deployments.`,
+    faq: [
+      {
+        q: "How does Avalanche Consensus work and why does it matter for DeFi?",
+        a: "Avalanche Consensus uses a randomised repeated sampling protocol where validators repeatedly query small random subsets of the network until a supermajority threshold is reached. This achieves finality in under two seconds with high throughput. For DeFi, this means transactions are irreversibly confirmed quickly — reducing the latency between submitting a LP management transaction and knowing it has settled, and making Avalanche suitable for applications that require fast on-chain confirmation.",
+      },
+      {
+        q: "What is the difference between Avalanche's X-Chain, C-Chain, and P-Chain?",
+        a: "Avalanche uses a three-chain architecture. The C-Chain (Contract Chain) is EVM-compatible and where DeFi protocols like SushiSwap operate. The X-Chain (Exchange Chain) is used for native AVAX asset creation and transfers. The P-Chain (Platform Chain) manages validators and subnets. As a liquidity provider on SushiSwap, you only interact with the C-Chain — the other chains are transparent to standard DeFi usage.",
+      },
+      {
+        q: "What are the main token pairs on SushiSwap Avalanche?",
+        a: "The highest-volume SushiSwap pools on Avalanche typically involve AVAX, USDC, USDT, WETH.e (bridged Ethereum ETH), and WBTC.e (bridged Bitcoin). The '.e' suffix indicates assets bridged from Ethereum via the Avalanche Bridge. As Avalanche's native token ecosystem grows through subnet activity, more pairs are likely to develop meaningful volume on SushiSwap.",
+      },
+      {
+        q: "How does SushiSwap on Avalanche differ from Trader Joe?",
+        a: "Trader Joe is Avalanche's largest native DEX with the deepest liquidity for AVAX-paired tokens. SushiSwap competes primarily through cross-chain consistency for users managing positions across multiple networks, and for pairs involving assets that have more history on Ethereum than in Avalanche's native ecosystem. For Avalanche-native pairs, Trader Joe typically has better depth.",
+      },
+    ],
+  },
+
+  "avalanche/uniswap": {
+    protocol: {
+      creator: "Hayden Adams",
+      launched: "Noviembre 2018 (V1 en Ethereum); desplegado en Avalanche C-Chain con V3 en 2023",
+      became_known: "Uniswap es el creador del modelo AMM moderno y el DEX más reconocido de la industria. Su llegada a Avalanche forma parte de su expansión multi-cadena iniciada con V3 en 2021, llevando el protocolo de referencia de Ethereum a redes con economías de transacción más favorables para la gestión activa de liquidez.",
+    },
+    description: `Uniswap V3 on Avalanche C-Chain gives liquidity providers access to the most recognised DEX brand in DeFi on one of the fastest Layer 1 blockchains. Avalanche's sub-two-second finality and low AVAX-denominated gas fees make it an attractive environment for deploying concentrated liquidity — particularly for LPs who want to manage positions actively without the gas overhead of Ethereum mainnet.
+
+Avalanche's C-Chain is fully EVM-compatible, meaning Uniswap V3 deploys and operates identically to its Ethereum deployment. The user experience, smart contract mechanics, and fee structure are the same — the differences are in the underlying consensus, finality speed, and native token ecosystem. Uniswap on Avalanche competes with Trader Joe and SushiSwap for LP capital, with each protocol attracting different segments of the liquidity provider community.
+
+The Avalanche ecosystem has seen significant institutional interest, particularly through its Evergreen subnet program that enables regulated financial applications to deploy on Avalanche-powered infrastructure. This institutional activity contributes to volume in blue-chip pairs on Avalanche's main C-Chain, where Uniswap captures a share of the resulting trading flow.`,
+    faq: [
+      {
+        q: "Why use Uniswap on Avalanche instead of a native DEX like Trader Joe?",
+        a: "Uniswap on Avalanche makes sense for LPs who already use Uniswap across multiple chains and want consistency, or for specific pairs where Uniswap has better depth due to cross-chain arbitrage dynamics. Trader Joe generally has deeper liquidity for AVAX-native pairs, but Uniswap can be competitive for bridged Ethereum assets like WETH.e and USDC that have more history on Uniswap's mainnet pools.",
+      },
+      {
+        q: "What is the Avalanche Bridge and how does it affect liquidity?",
+        a: "The Avalanche Bridge (AB) allows ERC-20 tokens to be transferred from Ethereum to Avalanche C-Chain, where they appear as '.e' suffixed tokens (e.g., WETH.e, USDC.e). These bridged assets are the primary connection between Ethereum liquidity and Avalanche's DeFi ecosystem. Deep liquidity in bridged assets on Uniswap Avalanche benefits from arbitrage flows between Ethereum and Avalanche whenever prices diverge between the two chains.",
+      },
+      {
+        q: "What are the gas costs for LP operations on Avalanche?",
+        a: "Gas fees on Avalanche C-Chain are paid in AVAX and are typically under $0.10 for standard LP operations. During periods of high network activity, fees can rise somewhat, but Avalanche's throughput capacity means that fee spikes are less common and less severe than on Ethereum. You need a small AVAX balance in your wallet to pay gas fees for Uniswap interactions on Avalanche.",
+      },
+      {
+        q: "How does Avalanche's finality speed affect LP strategy?",
+        a: "Avalanche's sub-two-second finality means that price updates, arbitrage, and LP management transactions confirm quickly. For concentrated liquidity LPs, this means that when your position goes out of range, you can adjust it and have the new range active within seconds rather than waiting minutes as on Ethereum. This speed advantage makes tighter price ranges more manageable on Avalanche than on slower chains.",
+      },
+    ],
+  },
+};
